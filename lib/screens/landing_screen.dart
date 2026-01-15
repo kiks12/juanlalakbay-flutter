@@ -4,6 +4,7 @@ import 'package:juanlalakbay/models/game_progress.dart';
 import 'package:juanlalakbay/models/level.dart';
 import 'package:juanlalakbay/models/level_node.dart';
 import 'package:juanlalakbay/models/level_state.dart';
+import 'package:juanlalakbay/screens/certificate_screen.dart';
 import 'package:juanlalakbay/screens/game_start.dart';
 import 'package:juanlalakbay/screens/hive_service.dart';
 import 'package:juanlalakbay/services/levels_service.dart';
@@ -122,6 +123,14 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
     Navigator.push(context, route);
   }
 
+  navigateToCertificatesScreen() {
+    MaterialPageRoute route = MaterialPageRoute(
+      builder: (context) => const CertificateScreen(),
+    );
+    Navigator.push(context, route);
+    // Navigate to certificates screen
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -187,7 +196,15 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
                     children: [
                       GameText(text: "Juanlalakbay", fontSize: 64),
                       Spacer(),
-                      GameButton(text: "Start", onPressed: startGame),
+                      GameButton(text: "Sulong", onPressed: startGame),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: GameButton(
+                          text: "Certificates",
+                          onPressed: navigateToCertificatesScreen,
+                          type: GameButtonType.info,
+                        ),
+                      ),
                     ],
                   ),
                 ),
