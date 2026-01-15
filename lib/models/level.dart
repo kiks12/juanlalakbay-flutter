@@ -8,7 +8,7 @@ LevelType levelTypeFromString(String type) {
       return LevelType.tula;
     case 'PABULA':
       return LevelType.pabula;
-    case 'MAIKLING_KUWENTO':
+    case 'MAIKLING KUWENTO':
       return LevelType.maiklingKuwento;
     default:
       throw Exception('Unknown LevelType: $type');

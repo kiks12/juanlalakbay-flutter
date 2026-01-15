@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:juanlalakbay/models/level.dart';
+import 'package:juanlalakbay/screens/certificate_screen.dart';
 import 'package:juanlalakbay/screens/hive_service.dart';
+import 'package:juanlalakbay/services/levels_service.dart';
 import 'package:juanlalakbay/widgets/button.dart';
 import 'package:juanlalakbay/widgets/character.dart';
 import 'package:juanlalakbay/widgets/health_bar.dart';
@@ -9,9 +11,9 @@ import 'package:juanlalakbay/widgets/story_card.dart';
 import 'package:juanlalakbay/widgets/text.dart';
 
 class GameStart extends StatefulWidget {
-  const GameStart({super.key, required this.level});
+  const GameStart({super.key, required this.levelNumber});
 
-  final Level level;
+  final int levelNumber;
 
   @override
   State<GameStart> createState() => _GameStartState();
@@ -19,11 +21,14 @@ class GameStart extends StatefulWidget {
 
 class _GameStartState extends State<GameStart> {
   HiveService hiveService = HiveService.instance;
+  LevelsService levelsService = LevelsService();
+  late Level level;
 
   int villainHealth = 3;
   int playerHealth = 3;
   int currentQuestionIndex = 0;
 
+  bool loadingLevel = true;
   bool showStory = true;
   bool showSusunodButton = true;
   bool showLabanText = false;
@@ -36,8 +41,28 @@ class _GameStartState extends State<GameStart> {
   void initState() {
     super.initState();
 
-    // Shuffle questions
-    widget.level.questions.shuffle();
+    loadLevel();
+  }
+
+  Future<void> loadLevel() async {
+    List<Level> levels = await levelsService.loadJsonData();
+
+    if (widget.levelNumber >= levels.length && mounted) {
+      // If level number exceeds available levels
+      // show certificate or congrats screen instead
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const CertificateScreen()),
+      );
+      return;
+    }
+
+    setState(() {
+      level = levels.firstWhere((lvl) => lvl.level == widget.levelNumber);
+      // Shuffle questions for randomness
+      level.questions.shuffle();
+      loadingLevel = false;
+    });
   }
 
   void checkWinLose() {
@@ -95,8 +120,8 @@ class _GameStartState extends State<GameStart> {
 
     // Save progress to Hive
     var currentProgress = hiveService.gameProgress;
-    currentProgress.completedLevels.add(widget.level.level);
-    currentProgress.defeatedEnemies.add(widget.level.characters[1]);
+    currentProgress.completedLevels.add(level.level);
+    currentProgress.defeatedEnemies.add(level.characters[1]);
     currentProgress.currentLevel += 1;
 
     hiveService.saveGameProgress(currentProgress);
@@ -126,7 +151,7 @@ class _GameStartState extends State<GameStart> {
   Widget buildQuizContent() {
     // Show story first
     if (showStory) {
-      return StoryCard(title: widget.level.title, story: widget.level.story);
+      return StoryCard(title: level.title, story: level.story);
     }
 
     // Show LABAN
@@ -146,7 +171,16 @@ class _GameStartState extends State<GameStart> {
           ),
           GameButton(
             text: "Susunod",
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      GameStart(levelNumber: widget.levelNumber + 1),
+                ),
+              );
+            },
             type: GameButtonType.success,
           ),
           Padding(
@@ -170,7 +204,19 @@ class _GameStartState extends State<GameStart> {
           const Center(
             child: GameText(text: 'Talo! Natalo ka sa laban!', fontSize: 24),
           ),
-          GameButton(text: "Ulitin", onPressed: () {}),
+          GameButton(
+            text: "Ulitin",
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      GameStart(levelNumber: widget.levelNumber),
+                ),
+              );
+            },
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: GameButton(
@@ -211,9 +257,9 @@ class _GameStartState extends State<GameStart> {
     }
 
     // Show questions
-    if (currentQuestionIndex < widget.level.questions.length) {
+    if (currentQuestionIndex < level.questions.length) {
       return QuestionAnswerCard(
-        question: widget.level.questions[currentQuestionIndex],
+        question: level.questions[currentQuestionIndex],
         onWrongAnswer: onWrongAnswer,
         onCorrectAnswer: onCorrectAnswer,
       );
@@ -230,60 +276,61 @@ class _GameStartState extends State<GameStart> {
         shadowColor: Colors.transparent,
         backgroundColor: Colors.transparent,
         title: GameText(
-          text:
-              'Level ${widget.level.level} - ${widget.level.type.name.toUpperCase()}',
+          text: 'Level ${level.level} - ${level.type.name.toUpperCase()}',
         ),
       ),
-      body: Stack(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Character(
-                currentHealth: playerHealth,
-                type: HealthBarType.player,
-                name: 'Player',
-              ),
-              buildQuizContent(),
-              Character(
-                currentHealth: villainHealth,
-                type: HealthBarType.villain,
-                name: widget.level.characters[1],
-              ),
-            ],
-          ),
-          (showSusunodButton)
-              ? Container(
-                  alignment: Alignment.bottomRight,
-                  padding: const EdgeInsets.all(16),
-                  child: GameButton(onPressed: susunod, text: 'Susunod'),
-                )
-              : Container(),
-          (savingProgress)
-              ? Container(
-                  color: Colors.black54,
-                  child: Center(
-                    child: Container(
-                      padding: const EdgeInsets.all(24),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: const [
-                          CircularProgressIndicator(),
-                          SizedBox(height: 16),
-                          GameText(text: 'Saving Progress...'),
-                        ],
-                      ),
+      body: (loadingLevel)
+          ? Center(child: CircularProgressIndicator())
+          : Stack(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Character(
+                      currentHealth: playerHealth,
+                      type: HealthBarType.player,
+                      name: 'Player',
                     ),
-                  ),
-                )
-              : Container(),
-        ],
-      ),
+                    buildQuizContent(),
+                    Character(
+                      currentHealth: villainHealth,
+                      type: HealthBarType.villain,
+                      name: level.characters[1],
+                    ),
+                  ],
+                ),
+                (showSusunodButton)
+                    ? Container(
+                        alignment: Alignment.bottomRight,
+                        padding: const EdgeInsets.all(16),
+                        child: GameButton(onPressed: susunod, text: 'Susunod'),
+                      )
+                    : Container(),
+                (savingProgress)
+                    ? Container(
+                        color: Colors.black54,
+                        child: Center(
+                          child: Container(
+                            padding: const EdgeInsets.all(24),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: const [
+                                CircularProgressIndicator(),
+                                SizedBox(height: 16),
+                                GameText(text: 'Saving Progress...'),
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
+                    : Container(),
+              ],
+            ),
     );
   }
 }

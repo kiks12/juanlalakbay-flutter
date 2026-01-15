@@ -5,6 +5,8 @@ import 'package:juanlalakbay/adapters/game_progress.dart';
 import 'package:juanlalakbay/screens/landing_screen.dart';
 import 'package:path_provider/path_provider.dart';
 
+final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -32,6 +34,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorObservers: [routeObserver],
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
