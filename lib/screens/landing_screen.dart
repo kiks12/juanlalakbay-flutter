@@ -162,6 +162,13 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
                             child: LevelMarker(
                               level: level.level,
                               state: state,
+                              onTap: () {
+                                MaterialPageRoute route = MaterialPageRoute(
+                                  builder: (context) =>
+                                      GameStart(levelNumber: level.level),
+                                );
+                                Navigator.push(context, route);
+                              },
                             ),
                           );
                         }),

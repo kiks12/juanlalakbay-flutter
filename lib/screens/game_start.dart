@@ -37,6 +37,9 @@ class _GameStartState extends State<GameStart> {
   bool showTieContent = false;
   bool savingProgress = false;
 
+  final playerKey = GlobalKey<CharacterState>();
+  final villainKey = GlobalKey<CharacterState>();
+
   @override
   void initState() {
     super.initState();
@@ -120,6 +123,17 @@ class _GameStartState extends State<GameStart> {
 
     // Save progress to Hive
     var currentProgress = hiveService.gameProgress;
+
+    if (currentProgress.currentLevel > level.level) {
+      // Already saved progress for this level or beyond
+      Future.delayed(const Duration(seconds: 1), () {
+        setState(() {
+          savingProgress = false;
+        });
+      });
+      return;
+    }
+
     currentProgress.completedLevels.add(level.level);
     currentProgress.defeatedEnemies.add(level.characters[1]);
     currentProgress.currentLevel += 1;
@@ -138,6 +152,7 @@ class _GameStartState extends State<GameStart> {
       villainHealth--;
       currentQuestionIndex++;
     });
+    villainKey.currentState?.damageCharacter();
     checkWinLose();
   }
 
@@ -145,6 +160,7 @@ class _GameStartState extends State<GameStart> {
     setState(() {
       playerHealth--;
     });
+    playerKey.currentState?.damageCharacter();
     checkWinLose();
   }
 
@@ -281,55 +297,71 @@ class _GameStartState extends State<GameStart> {
       ),
       body: (loadingLevel)
           ? Center(child: CircularProgressIndicator())
-          : Stack(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Character(
-                      currentHealth: playerHealth,
-                      type: HealthBarType.player,
-                      name: 'Player',
-                    ),
-                    buildQuizContent(),
-                    Character(
-                      currentHealth: villainHealth,
-                      type: HealthBarType.villain,
-                      name: level.characters[1],
-                    ),
-                  ],
-                ),
-                (showSusunodButton)
-                    ? Container(
-                        alignment: Alignment.bottomRight,
-                        padding: const EdgeInsets.all(16),
-                        child: GameButton(onPressed: susunod, text: 'Susunod'),
-                      )
-                    : Container(),
-                (savingProgress)
-                    ? Container(
-                        color: Colors.black54,
+          : SafeArea(
+              child: Stack(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 16.0),
+                        child: Character(
+                          key: playerKey,
+                          currentHealth: playerHealth,
+                          type: HealthBarType.player,
+                          name: 'Player',
+                        ),
+                      ),
+                      Expanded(
                         child: Center(
-                          child: Container(
-                            padding: const EdgeInsets.all(24),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: const [
-                                CircularProgressIndicator(),
-                                SizedBox(height: 16),
-                                GameText(text: 'Saving Progress...'),
-                              ],
-                            ),
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 420),
+                            child: buildQuizContent(),
                           ),
                         ),
-                      )
-                    : Container(),
-              ],
+                      ),
+                      Character(
+                        key: villainKey,
+                        currentHealth: villainHealth,
+                        type: HealthBarType.villain,
+                        name: level.characters[1],
+                      ),
+                    ],
+                  ),
+                  (showSusunodButton)
+                      ? Container(
+                          alignment: Alignment.bottomRight,
+                          child: GameButton(
+                            onPressed: susunod,
+                            text: 'Susunod',
+                          ),
+                        )
+                      : Container(),
+                  (savingProgress)
+                      ? Container(
+                          color: Colors.transparent,
+                          child: Center(
+                            child: Container(
+                              padding: const EdgeInsets.all(24),
+                              decoration: BoxDecoration(
+                                color: Colors.transparent,
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: const [
+                                  CircularProgressIndicator(),
+                                  SizedBox(height: 16),
+                                  GameText(text: 'Saving Progress...'),
+                                ],
+                              ),
+                            ),
+                          ),
+                        )
+                      : Container(),
+                ],
+              ),
             ),
     );
   }
