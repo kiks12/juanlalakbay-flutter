@@ -24,11 +24,13 @@ class _QuestionAnswerCardState extends State<QuestionAnswerCard> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         /// QUESTION CARD - Gamey Version
         Container(
-          margin: const EdgeInsets.fromLTRB(8, 8, 8, 8),
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             gradient: const LinearGradient(
               colors: [Color(0xFFFFF59D), Color(0xFFFFE082)],
@@ -49,7 +51,7 @@ class _QuestionAnswerCardState extends State<QuestionAnswerCard> {
           child: Text(
             widget.question.question,
             style: const TextStyle(
-              fontSize: 12,
+              fontSize: 14,
               fontWeight: FontWeight.bold,
               color: Colors.black87,
               shadows: [
@@ -66,7 +68,7 @@ class _QuestionAnswerCardState extends State<QuestionAnswerCard> {
 
         // ANSWERS CARD - Gamey Version
         Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.only(top: 12.0),
           child: Column(
             children: List.generate(widget.question.choices.length, (index) {
               final choice = widget.question.choices[index];
@@ -96,7 +98,7 @@ class _QuestionAnswerCardState extends State<QuestionAnswerCard> {
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 150),
                     width: double.infinity,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     decoration: BoxDecoration(
                       gradient: gradient,
                       borderRadius: BorderRadius.circular(20),
@@ -116,7 +118,7 @@ class _QuestionAnswerCardState extends State<QuestionAnswerCard> {
                         choice.choice,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                          fontSize: 10,
+                          fontSize: 12,
                           fontWeight: FontWeight.bold,
                           color: Colors.black87,
                           shadows: [

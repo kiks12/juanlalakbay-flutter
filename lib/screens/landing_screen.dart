@@ -11,7 +11,6 @@ import 'package:juanlalakbay/services/levels_service.dart';
 import 'package:juanlalakbay/widgets/button.dart';
 import 'package:juanlalakbay/widgets/level_marker/level_marker.dart';
 import 'package:juanlalakbay/widgets/level_path_painter.dart';
-import 'package:juanlalakbay/widgets/text.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
@@ -21,6 +20,7 @@ class LandingScreen extends StatefulWidget {
 }
 
 class _LandingScreenState extends State<LandingScreen> with RouteAware {
+  static double offsetX = -84.0;
   final HiveService hiveService = HiveService.instance;
   final LevelsService levelsService = LevelsService();
 
@@ -142,6 +142,32 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
           ? const Center(child: CircularProgressIndicator())
           : Stack(
               children: [
+                // Background image stays fixed
+                Image.asset(
+                  'assets/backgrounds/background.png',
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: double.infinity,
+                ),
+                // Huge overflowing wave
+                OverflowBox(
+                  maxWidth: double.infinity,
+                  maxHeight: double.infinity,
+                  alignment:
+                      Alignment.topCenter, // adjust where the wave "originates"
+                  child: Image.asset(
+                    'assets/backgrounds/wave.png',
+                    fit: BoxFit.cover,
+                    width:
+                        MediaQuery.of(context).size.width *
+                        2, // 2x screen width
+                    height:
+                        MediaQuery.of(context).size.height *
+                        2, // 2x screen height
+                    opacity: AlwaysStoppedAnimation(0.2),
+                  ),
+                ),
+
                 // Scrollable level map
                 SingleChildScrollView(
                   controller: _scrollController,
@@ -150,10 +176,18 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
                     height: nodes.last.dy + 200,
                     child: Stack(
                       children: [
+                        // Philippines map now scrolls with content
+                        Image.asset(
+                          'assets/backgrounds/philippines.png',
+                          fit: BoxFit.cover,
+                          width: screenWidth,
+                          height: nodes.last.dy + 200,
+                        ),
+
                         // Path
                         CustomPaint(
                           size: Size(screenWidth, nodes.last.dy + 200),
-                          painter: SmoothSCurvePainter(nodes),
+                          painter: SmoothSCurvePainter(nodes, offsetX: offsetX),
                         ),
 
                         // Markers ON the path
@@ -166,17 +200,19 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
                           final pos = nodes[index];
 
                           return Positioned(
-                            left: pos.dx - 32,
+                            left: pos.dx - 32 + offsetX,
                             top: pos.dy - 32,
                             child: LevelMarker(
                               level: level.level,
                               state: state,
                               onTap: () {
-                                MaterialPageRoute route = MaterialPageRoute(
-                                  builder: (context) =>
-                                      GameStart(levelNumber: level.level),
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        GameStart(levelNumber: level.level),
+                                  ),
                                 );
-                                Navigator.push(context, route);
                               },
                             ),
                           );
@@ -186,16 +222,43 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
                   ),
                 ),
 
+                // Logo at the top-right corne
+                Positioned(
+                  top: 20,
+                  right: 40,
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white, // background color for the circle
+                      border: Border.all(
+                        color: Colors.orange.shade700, // circular border
+                        width: 2,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          offset: const Offset(0, 6),
+                          blurRadius: 6,
+                        ),
+                      ],
+                    ),
+                    child: ClipOval(
+                      child: Image.asset('assets/logo.png', fit: BoxFit.cover),
+                    ),
+                  ),
+                ),
+
                 // Title + Start Button (fixed)
                 Positioned(
-                  top: 40,
-                  left: 0,
-                  right: 0,
+                  right: 40,
                   bottom: 40,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      GameText(text: "Juanlalakbay", fontSize: 64),
-                      Spacer(),
+                      // GameText(text: "Juanlalakbay", fontSize: 64),
+                      // Spacer(),
                       GameButton(text: "Sulong", onPressed: startGame),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),

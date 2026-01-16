@@ -41,8 +41,8 @@ class _GameStartState extends State<GameStart> {
 
   ImageProvider<Object>? backgroundImage;
 
-  final playerKey = GlobalKey<CharacterState>();
-  final villainKey = GlobalKey<CharacterState>();
+  final playerKey = GlobalKey<CharacterGroupState>();
+  final villainKey = GlobalKey<CharacterGroupState>();
 
   @override
   void initState() {
@@ -172,7 +172,7 @@ class _GameStartState extends State<GameStart> {
       villainHealth--;
       currentQuestionIndex++;
     });
-    villainKey.currentState?.damageCharacter();
+    villainKey.currentState?.damage();
     checkWinLose();
   }
 
@@ -180,7 +180,7 @@ class _GameStartState extends State<GameStart> {
     setState(() {
       playerHealth--;
     });
-    playerKey.currentState?.damageCharacter();
+    playerKey.currentState?.damage();
     checkWinLose();
   }
 
@@ -211,6 +211,9 @@ class _GameStartState extends State<GameStart> {
     // Show win content
     if (showWonContent) {
       return Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Center(
             child: GameText(
@@ -249,6 +252,9 @@ class _GameStartState extends State<GameStart> {
     // Show lose content
     if (showLostContent) {
       return Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Center(
             child: GameText(text: 'Talo! Natalo ka sa laban!', fontSize: 24),
@@ -283,6 +289,9 @@ class _GameStartState extends State<GameStart> {
     // Show tie content
     if (showTieContent) {
       return Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Center(
             child: GameText(
@@ -307,10 +316,13 @@ class _GameStartState extends State<GameStart> {
 
     // Show questions
     if (currentQuestionIndex < level.questions.length) {
-      return QuestionAnswerCard(
-        question: level.questions[currentQuestionIndex],
-        onWrongAnswer: onWrongAnswer,
-        onCorrectAnswer: onCorrectAnswer,
+      return Padding(
+        padding: const EdgeInsets.only(top: 32.0),
+        child: QuestionAnswerCard(
+          question: level.questions[currentQuestionIndex],
+          onWrongAnswer: onWrongAnswer,
+          onCorrectAnswer: onCorrectAnswer,
+        ),
       );
     }
 
@@ -342,16 +354,19 @@ class _GameStartState extends State<GameStart> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 16.0),
-                        child: Character(
-                          key: playerKey,
-                          currentHealth: playerHealth,
-                          type: HealthBarType.player,
-                          name: 'Player',
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 16.0),
+                          child: CharacterGroup(
+                            key: playerKey,
+                            currentHealth: playerHealth,
+                            type: HealthBarType.player,
+                            names: ['juan'],
+                          ),
                         ),
                       ),
                       Expanded(
+                        flex: 2,
                         child: Center(
                           child: ConstrainedBox(
                             constraints: const BoxConstraints(maxWidth: 420),
@@ -359,39 +374,55 @@ class _GameStartState extends State<GameStart> {
                           ),
                         ),
                       ),
-                      Character(
-                        key: villainKey,
-                        currentHealth: villainHealth,
-                        type: HealthBarType.villain,
-                        name: level.characters[1],
+                      Expanded(
+                        child: CharacterGroup(
+                          key: villainKey,
+                          currentHealth: villainHealth,
+                          type: HealthBarType.villain,
+                          names: level.characters.sublist(1),
+                        ),
                       ),
                     ],
                   ),
                 ),
+
+                // Top left navigation bar
                 SafeArea(
                   child: Container(
                     padding: EdgeInsets.only(top: 8.0),
                     alignment: Alignment.topLeft,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        IconButton.filledTonal(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(Icons.arrow_back),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            IconButton.filledTonal(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              icon: Icon(Icons.arrow_back),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: GameText(
+                                text:
+                                    'Level ${level.level} - ${level.type.name.toUpperCase()}',
+                                fontSize: 20,
+                              ),
+                            ),
+                          ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
-                          child: GameText(
-                            text:
-                                'Level ${level.level} - ${level.type.name.toUpperCase()}',
-                            fontSize: 20,
-                          ),
-                        ),
+
+                        // Level Title
+                        GameText(text: level.title, fontSize: 20),
                       ],
                     ),
                   ),
                 ),
+
+                // Susunod Button
                 (showSusunodButton)
                     ? Padding(
                         padding: const EdgeInsets.all(16.0),
@@ -405,6 +436,8 @@ class _GameStartState extends State<GameStart> {
                         ),
                       )
                     : Container(),
+
+                // Saving Progress Overlay
                 (savingProgress)
                     ? Container(
                         color: Colors.transparent,

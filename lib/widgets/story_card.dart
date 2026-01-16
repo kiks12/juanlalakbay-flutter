@@ -15,7 +15,7 @@ class StoryCard extends StatefulWidget {
     required this.story,
     this.onLastPageCallback,
     this.onNotLastPageCallback,
-    this.width = 400,
+    this.width = 450,
     this.height = 300,
   });
 
@@ -24,7 +24,7 @@ class StoryCard extends StatefulWidget {
 }
 
 class _StoryCardState extends State<StoryCard> {
-  static const int charsPerPage = 175;
+  static const int charsPerPage = 250;
   late final List<String> pages;
   int currentPage = 0;
 
@@ -106,26 +106,6 @@ class _StoryCardState extends State<StoryCard> {
       ),
       child: Column(
         children: [
-          /// TITLE
-          Text(
-            widget.title,
-            style: const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w900,
-              color: Colors.black87,
-              shadows: [
-                Shadow(
-                  offset: Offset(0, 2),
-                  blurRadius: 1,
-                  color: Colors.black26,
-                ),
-              ],
-            ),
-            textAlign: TextAlign.center,
-          ),
-
-          const SizedBox(height: 12),
-
           /// STORY TEXT
           Expanded(
             child: Center(

@@ -45,8 +45,9 @@ class CurvedLevelPathPainter extends CustomPainter {
 
 class SmoothSCurvePainter extends CustomPainter {
   final List<Offset> points;
+  final double offsetX;
 
-  SmoothSCurvePainter(this.points);
+  SmoothSCurvePainter(this.points, {this.offsetX = 0});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -59,11 +60,12 @@ class SmoothSCurvePainter extends CustomPainter {
       ..strokeCap = StrokeCap.round;
 
     final path = Path();
-    path.moveTo(points.first.dx, points.first.dy);
+    final shiftedPoints = points.map((p) => p.translate(offsetX, 0)).toList();
+    path.moveTo(shiftedPoints.first.dx, shiftedPoints.first.dy);
 
-    for (int i = 1; i < points.length; i++) {
-      final prev = points[i - 1];
-      final curr = points[i];
+    for (int i = 1; i < shiftedPoints.length; i++) {
+      final prev = shiftedPoints[i - 1];
+      final curr = shiftedPoints[i];
 
       final midY = (prev.dy + curr.dy) / 2;
 
