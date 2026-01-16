@@ -24,4 +24,12 @@ class HiveService {
     return gameProgressBox.get(_progressKey) ??
         GameProgress(currentLevel: 1, completedLevels: []);
   }
+
+  void resetGameProgress({int currentLevel = 1}) {
+    gameProgress = GameProgress(
+      currentLevel: currentLevel,
+      completedLevels: [],
+    );
+    gameProgressBox.put(_progressKey, gameProgress);
+  }
 }
