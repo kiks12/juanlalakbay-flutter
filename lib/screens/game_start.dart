@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:juanlalakbay/models/level.dart';
 import 'package:juanlalakbay/screens/certificate_screen.dart';
 import 'package:juanlalakbay/screens/hive_service.dart';
@@ -36,6 +37,9 @@ class _GameStartState extends State<GameStart> {
   bool showLostContent = false;
   bool showTieContent = false;
   bool savingProgress = false;
+  bool onLastPage = false;
+
+  ImageProvider<Object>? backgroundImage;
 
   final playerKey = GlobalKey<CharacterState>();
   final villainKey = GlobalKey<CharacterState>();
@@ -44,7 +48,9 @@ class _GameStartState extends State<GameStart> {
   void initState() {
     super.initState();
 
-    loadLevel();
+    loadLevel().then((_) async {
+      backgroundImage = await loadBackground();
+    });
   }
 
   Future<void> loadLevel() async {
@@ -66,6 +72,20 @@ class _GameStartState extends State<GameStart> {
       level.questions.shuffle();
       loadingLevel = false;
     });
+  }
+
+  Future<ImageProvider<Object>> loadBackground() async {
+    try {
+      String imagePath = 'assets/settings/${level.setting}.png';
+      // Attempt to load the asset
+      await rootBundle.load(imagePath);
+      // If successful, return the AssetImage
+      return AssetImage(imagePath);
+    } catch (e) {
+      // If an error occurs (asset not found), return a default/placeholder image
+      // find a default placeholder based on setting
+      return const AssetImage("assets/settings/dagat.png");
+    }
   }
 
   void checkWinLose() {
@@ -167,7 +187,20 @@ class _GameStartState extends State<GameStart> {
   Widget buildQuizContent() {
     // Show story first
     if (showStory) {
-      return StoryCard(title: level.title, story: level.story);
+      return StoryCard(
+        title: level.title,
+        story: level.story,
+        onLastPageCallback: () {
+          setState(() {
+            onLastPage = true;
+          });
+        },
+        onNotLastPageCallback: () {
+          setState(() {
+            onLastPage = false;
+          });
+        },
+      );
     }
 
     // Show LABAN
@@ -288,19 +321,24 @@ class _GameStartState extends State<GameStart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        shadowColor: Colors.transparent,
-        backgroundColor: Colors.transparent,
-        title: GameText(
-          text: 'Level ${level.level} - ${level.type.name.toUpperCase()}',
-        ),
-      ),
       body: (loadingLevel)
           ? Center(child: CircularProgressIndicator())
-          : SafeArea(
-              child: Stack(
-                children: [
-                  Row(
+          : Stack(
+              children: [
+                backgroundImage != null
+                    ? Positioned.fill(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: backgroundImage!,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                      )
+                    : Container(),
+                SafeArea(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -329,39 +367,67 @@ class _GameStartState extends State<GameStart> {
                       ),
                     ],
                   ),
-                  (showSusunodButton)
-                      ? Container(
+                ),
+                SafeArea(
+                  child: Container(
+                    padding: EdgeInsets.only(top: 8.0),
+                    alignment: Alignment.topLeft,
+                    child: Row(
+                      children: [
+                        IconButton.filledTonal(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(Icons.arrow_back),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: GameText(
+                            text:
+                                'Level ${level.level} - ${level.type.name.toUpperCase()}',
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                (showSusunodButton)
+                    ? Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Container(
                           alignment: Alignment.bottomRight,
                           child: GameButton(
                             onPressed: susunod,
                             text: 'Susunod',
+                            enabled: onLastPage,
                           ),
-                        )
-                      : Container(),
-                  (savingProgress)
-                      ? Container(
-                          color: Colors.transparent,
-                          child: Center(
-                            child: Container(
-                              padding: const EdgeInsets.all(24),
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: const [
-                                  CircularProgressIndicator(),
-                                  SizedBox(height: 16),
-                                  GameText(text: 'Saving Progress...'),
-                                ],
-                              ),
+                        ),
+                      )
+                    : Container(),
+                (savingProgress)
+                    ? Container(
+                        color: Colors.transparent,
+                        child: Center(
+                          child: Container(
+                            padding: const EdgeInsets.all(24),
+                            decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: const [
+                                CircularProgressIndicator(),
+                                SizedBox(height: 16),
+                                GameText(text: 'Saving Progress...'),
+                              ],
                             ),
                           ),
-                        )
-                      : Container(),
-                ],
-              ),
+                        ),
+                      )
+                    : Container(),
+              ],
             ),
     );
   }

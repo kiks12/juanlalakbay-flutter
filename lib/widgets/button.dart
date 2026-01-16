@@ -6,11 +6,13 @@ class GameButton extends StatefulWidget {
   final String text;
   final VoidCallback onPressed;
   final GameButtonType type;
+  final bool enabled;
 
   const GameButton({
     super.key,
     required this.text,
     required this.onPressed,
+    this.enabled = true,
     this.type = GameButtonType.normal, // default
   });
 
@@ -21,8 +23,15 @@ class GameButton extends StatefulWidget {
 class _GameButtonState extends State<GameButton> {
   bool _isPressed = false;
 
-  // Helper to get gradient & border based on type
   LinearGradient get _gradient {
+    if (!widget.enabled) {
+      return const LinearGradient(
+        colors: [Colors.grey, Colors.grey],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      );
+    }
+
     switch (widget.type) {
       case GameButtonType.success:
         return const LinearGradient(
@@ -53,6 +62,8 @@ class _GameButtonState extends State<GameButton> {
   }
 
   Color get _borderColor {
+    if (!widget.enabled) return Colors.grey.shade700;
+
     switch (widget.type) {
       case GameButtonType.success:
         return const Color(0xFF388E3C);
@@ -69,18 +80,28 @@ class _GameButtonState extends State<GameButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTapDown: (_) => setState(() => _isPressed = true),
-      onTapUp: (_) {
-        setState(() => _isPressed = false);
-        widget.onPressed();
-      },
-      onTapCancel: () => setState(() => _isPressed = false),
+      onTapDown: widget.enabled
+          ? (_) => setState(() => _isPressed = true)
+          : null,
+      onTapUp: widget.enabled
+          ? (_) {
+              setState(() => _isPressed = false);
+              widget.onPressed();
+            }
+          : null,
+      onTapCancel: widget.enabled
+          ? () => setState(() => _isPressed = false)
+          : null,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 80),
-        transform: Matrix4.translationValues(0, _isPressed ? 6 : 0, 0),
+        transform: Matrix4.translationValues(
+          0,
+          (_isPressed && widget.enabled) ? 6 : 0,
+          0,
+        ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
-          boxShadow: _isPressed
+          boxShadow: (!widget.enabled || _isPressed)
               ? []
               : [
                   BoxShadow(
@@ -97,20 +118,23 @@ class _GameButtonState extends State<GameButton> {
             gradient: _gradient,
             border: Border.all(color: _borderColor, width: 3),
           ),
-          child: Text(
-            widget.text,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w900,
-              color: Colors.white,
-              shadows: [
-                Shadow(
-                  offset: Offset(0, 2),
-                  blurRadius: 0,
-                  color: Colors.black45,
-                ),
-              ],
+          child: Opacity(
+            opacity: widget.enabled ? 1.0 : 0.6,
+            child: Text(
+              widget.text,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w900,
+                color: Colors.white,
+                shadows: [
+                  Shadow(
+                    offset: Offset(0, 2),
+                    blurRadius: 0,
+                    color: Colors.black45,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

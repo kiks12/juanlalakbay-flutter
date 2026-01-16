@@ -221,72 +221,99 @@
   {
     "level": 4,
     "type": "PABULA",
-    "title": "Example Title 4",
-    "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec risus mi, porta eu mi ut, molestie condimentum neque. Curabitur sed mattis elit. Sed rhoncus urna arcu. Vestibulum sit amet velit dictum ipsum cursus finibus. Aliquam ac lobortis sapien. Suspendisse euismod feugiat pellentesque. Proin luctus elementum dolor, in pellentesque velit maximus eget. Donec dignissim orci id viverra finibus.",
-    "characters": ["character", "villain4"],
-    "setting": "setting",
+    "title": "Si Balyena at Pusit",
+    "story": "Isang araw masayang paikot-ikot si Susie Pusit kasama ang kanyang mga kaibigan upang maghanap ng maliliit na hipon na kanilang makakain sa dagat. Subalit biglang dumating si Bela Balyena, kaya ang mga kasama ni Susie Pusit ay nagsitakbuhan dahil sa takot sa malaking si Bela Balyena. Tanging si Susie Pusit lamang ang nanatili at hindi nasindak sa malaking balyena. Nainis si Bela dahil hindi niya nakitaan ng takot si Susie Pusit kahit nadadala na ito ng mga alon dahil sa laki niya. Kahit anong gawin ni Bela upang matakot si Susie ay walang epekto. Kaya minabuti na lamang ni Bela na makipagkaibigan kay Susie dahil sa unang pagkakataon ay may nilalang na hindi natakot at hindi humusga sa kanyang anyo. Sila ay naging matalik na magkaibigan at natutong tanggapin ang isa’t isa.",
+    "characters": ["juan", "balyena", "pusit", "hipon"],
+    "setting": "dagat",
     "questions": [
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "question": "Sino ang pangunahing tauhan sa kwento?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": true
-          }
+          { "choice": "Si Leon at Daga", "isAnswer": false },
+          { "choice": "Si Balyena at Pusit", "isAnswer": true },
+          { "choice": "Si Pagong at si Matsing", "isAnswer": false },
+          { "choice": "Si Langgam at Tipaklong", "isAnswer": false }
         ]
       },
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (2)",
+        "question": "Saan ang tagpuan ng kwento?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": true
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": false
-          }
+          { "choice": "Kabundukan", "isAnswer": false },
+          { "choice": "Kapaligiran", "isAnswer": false },
+          { "choice": "Kapatagan", "isAnswer": false },
+          { "choice": "Karagatan", "isAnswer": true }
         ]
       },
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (3)",
+        "question": "Ano ang kanilang hinahanap na pagkain?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": true
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": false
-          }
+          { "choice": "Maliit na isda", "isAnswer": false },
+          { "choice": "Damong-dagat", "isAnswer": false },
+          { "choice": "Kabibe", "isAnswer": false },
+          { "choice": "Maliliit na hipon", "isAnswer": true }
+        ]
+      },
+      {
+        "question": "Sino ang biglang dumating na ikinabahala ng mga kaibigan ni Susie?",
+        "choices": [
+          { "choice": "Pating", "isAnswer": false },
+          { "choice": "Higanteng pusit", "isAnswer": false },
+          { "choice": "Bela Balyena", "isAnswer": true },
+          { "choice": "Pagong", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang ginawa ng mga kaibigan ni Susie Pusit?",
+        "choices": [
+          { "choice": "Lumaban", "isAnswer": false },
+          { "choice": "Nagtago", "isAnswer": false },
+          { "choice": "Nagsitakbuhan", "isAnswer": true },
+          { "choice": "Nakipagkaibigan", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Bakit naiwan si Susie Pusit mag-isa?",
+        "choices": [
+          { "choice": "Naliligaw siya", "isAnswer": false },
+          { "choice": "Matapang siya at hindi natakot", "isAnswer": true },
+          { "choice": "Nahuli siya", "isAnswer": false },
+          { "choice": "Ayaw niya sa kaibigan", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang naramdaman ni Bela Balyena kay Susie?",
+        "choices": [
+          { "choice": "Natakot", "isAnswer": false },
+          { "choice": "Natuwa", "isAnswer": false },
+          { "choice": "Nainis", "isAnswer": true },
+          { "choice": "Nalungkot", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang ginawa ni Bela upang takutin si Susie?",
+        "choices": [
+          { "choice": "Lumayo", "isAnswer": false },
+          { "choice": "Lumangoy palayo", "isAnswer": false },
+          { "choice": "Gumawa ng nakakatakot na kilos", "isAnswer": true },
+          { "choice": "Tinulungan siya", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Bakit minabuti ni Bela na makipagkaibigan kay Susie?",
+        "choices": [
+          { "choice": "Gusto niya ng pagkain", "isAnswer": false },
+          { "choice": "Wala siyang kaibigan", "isAnswer": false },
+          { "choice": "Hindi siya hinusgahan ni Susie", "isAnswer": true },
+          { "choice": "Maliit si Susie", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang pangunahing aral ng pabula?",
+        "choices": [
+          { "choice": "Masama ang pagiging malaki", "isAnswer": false },
+          { "choice": "Dapat matakot sa mas malaki", "isAnswer": false },
+          { "choice": "Mahalaga ang pagtanggap at hindi paghusga", "isAnswer": true },
+          { "choice": "Mas mabuti ang mag-isa", "isAnswer": false }
         ]
       }
     ]
@@ -294,72 +321,99 @@
   {
     "level": 5,
     "type": "PABULA",
-    "title": "Example Title 5",
-    "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec risus mi, porta eu mi ut, molestie condimentum neque. Curabitur sed mattis elit. Sed rhoncus urna arcu. Vestibulum sit amet velit dictum ipsum cursus finibus. Aliquam ac lobortis sapien. Suspendisse euismod feugiat pellentesque. Proin luctus elementum dolor, in pellentesque velit maximus eget. Donec dignissim orci id viverra finibus.",
-    "characters": ["character", "villain5"],
-    "setting": "setting",
+    "title": "Ang Tigre at Pusa at ang mga Higanteng Langgam",
+    "story": "Isang araw si Peter na isang tigre ay naghahanap ng pagkain sa paligid ng kagubatan. Napadpad ito sa teritoryo ng mga langgam na hindi ordinaryo sapagkat ang mga ito ay kasing laki ng pusa. Dahan-dahan niyang pinagmasdan ang mga langgam dahil tila may hinahanap ang mga ito sa hindi kalayuan. Maya-maya ay natanaw niya ang isang pusang nagngangalang Solomon na nagtatago at bakas ang matinding takot sa mukha. Agad na tinulungan ni Peter ang pusa at sabay silang tumakbo palayo sa teritoryo ng higanteng mga langgam. Nailigtas ni Peter si Solomon mula sa pagiging pagkain ng mga langgam at doon nabuo ang kanilang pagkakaibigan.",
+    "characters": ["juan", "tigre", "pusa", "langgam"],
+    "setting": "gubat",
     "questions": [
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "question": "Sino ang pangunahing tauhan sa kuwento?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": true
-          }
+          { "choice": "Solomon na Pusa", "isAnswer": false },
+          { "choice": "Peter na Tigre", "isAnswer": true },
+          { "choice": "Higanteng Langgam", "isAnswer": false },
+          { "choice": "Pusang Ligaw", "isAnswer": false }
         ]
       },
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (2)",
+        "question": "Ano ang ginagawa ni Peter na Tigre sa simula ng kuwento?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": true
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": false
-          }
+          { "choice": "Natutulog sa gubat", "isAnswer": false },
+          { "choice": "Naghahanap ng kaibigan", "isAnswer": false },
+          { "choice": "Naghahanap ng pagkain", "isAnswer": true },
+          { "choice": "Naglalakbay sa malayo", "isAnswer": false }
         ]
       },
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (3)",
+        "question": "Saan napadpad si Peter na Tigre?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": true
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": false
-          }
+          { "choice": "Sa teritoryo ng mga leon", "isAnswer": false },
+          { "choice": "Sa teritoryo ng higanteng mga langgam", "isAnswer": true },
+          { "choice": "Sa kabundukan", "isAnswer": false },
+          { "choice": "Sa tabing-ilog", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang kakaiba sa mga langgam sa kuwento?",
+        "choices": [
+          { "choice": "Marunong silang magsalita", "isAnswer": false },
+          { "choice": "Maliit ngunit mabilis", "isAnswer": false },
+          { "choice": "Kasing laki sila ng pusa", "isAnswer": true },
+          { "choice": "May pakpak sila", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang napansin ni Peter habang pinagmamasdan ang mga langgam?",
+        "choices": [
+          { "choice": "May ginagawa silang pugad", "isAnswer": false },
+          { "choice": "May hinahabol silang hayop", "isAnswer": false },
+          { "choice": "May hinahanap sila sa malayo", "isAnswer": true },
+          { "choice": "Natutulog ang mga ito", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Sino ang hayop na nakita ni Peter na nagtatago at takot na takot?",
+        "choices": [
+          { "choice": "Isang aso", "isAnswer": false },
+          { "choice": "Isang daga", "isAnswer": false },
+          { "choice": "Isang pusa na si Solomon", "isAnswer": true },
+          { "choice": "Isang kuneho", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang ginawa ni Peter nang makita si Solomon?",
+        "choices": [
+          { "choice": "Iniwan siya", "isAnswer": false },
+          { "choice": "Tinawag ang mga langgam", "isAnswer": false },
+          { "choice": "Tinulungan at tumakbo palayo kasama siya", "isAnswer": true },
+          { "choice": "Pinagmasdan lamang", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang maaaring mangyari kay Solomon kung hindi siya tinulungan ni Peter?",
+        "choices": [
+          { "choice": "Makakatakas siya", "isAnswer": false },
+          { "choice": "Magiging pagkain ng mga langgam", "isAnswer": true },
+          { "choice": "Makikipagkaibigan sa mga langgam", "isAnswer": false },
+          { "choice": "Matutulog sa puno", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang nabuo matapos iligtas ni Peter si Solomon?",
+        "choices": [
+          { "choice": "Galit", "isAnswer": false },
+          { "choice": "Takot", "isAnswer": false },
+          { "choice": "Pagkakaibigan", "isAnswer": true },
+          { "choice": "Pag-aaway", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang pangunahing aral ng pabula?",
+        "choices": [
+          { "choice": "Mas mabuti ang mag-isa", "isAnswer": false },
+          { "choice": "Dapat iwasan ang mga langgam", "isAnswer": false },
+          { "choice": "Mahalaga ang pagtulong at pakikipagkaibigan", "isAnswer": true },
+          { "choice": "Masama ang pagiging mausisa", "isAnswer": false }
         ]
       }
     ]
@@ -367,72 +421,99 @@
   {
     "level": 6,
     "type": "PABULA",
-    "title": "Example Title 6",
-    "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec risus mi, porta eu mi ut, molestie condimentum neque. Curabitur sed mattis elit. Sed rhoncus urna arcu. Vestibulum sit amet velit dictum ipsum cursus finibus. Aliquam ac lobortis sapien. Suspendisse euismod feugiat pellentesque. Proin luctus elementum dolor, in pellentesque velit maximus eget. Donec dignissim orci id viverra finibus.",
-    "characters": ["character", "villain 6"],
-    "setting": "setting",
+    "title": "Ang Leon-Dagat Tuna at ang Puting Pating",
+    "story": "Isang araw sa malawak na karagatan naglalakbay si Berto leon-dagat sa gitnang bahagi ng karagatan at hindi kalaunan ay naligaw ito sa teritoryo ng mga Tuna. Agad itong nakita ng grupo nina Pablo na mga Tuna at sinundan si Berto na leon-dagat hanggang sa ito ay mapagod. Hindi nagtagal nanghina na si Berto at ito ay binabangga na grupo ni Pablo na nagpapahiwatig na ito ay kanilang kakainin. Sa hindi kalayuan ay nakita ito naman nito ng Puting Pating na si Diego at itinaboy nya ang grupo nila Pablo. Labis na nagpapasalamat ang si Berto sa puting pating na si Diego dahil ito ang nagligtas sa kanya sa kapahamakan at tinulungan maka balik sa ligtas na lugar. Bago maghiwalay ay si Berto na leon dagat at si Diego na Puting pating ay nakilala ang isa't isa, si Berto pala ang dating tinulungan ni Diego noong ito ay naligaw sa kanilang lugar upang makabalik ulit sa kanyang pamilya. Mula noon ay naging matalik na magkaibigan na ang dalawa.",
+    "characters": ["juan", "leon-dagat", "tuna", "puting pating"],
+    "setting": "karagatan",
     "questions": [
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "question": "Sino ang pangunahing tauhan sa kuwento?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": true
-          }
+          { "choice": "Pablo na Tuna", "isAnswer": false },
+          { "choice": "Diego na Puting Pating", "isAnswer": false },
+          { "choice": "Berto Sea Lion", "isAnswer": true },
+          { "choice": "Grupo ng mga Tuna", "isAnswer": false }
         ]
       },
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (2)",
+        "question": "Saan naglalakbay si Berto Sea Lion sa simula ng kuwento?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": true
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": false
-          }
+          { "choice": "Sa mababaw na dagat", "isAnswer": false },
+          { "choice": "Sa ilog", "isAnswer": false },
+          { "choice": "Sa malawak na karagatan", "isAnswer": true },
+          { "choice": "Sa korales", "isAnswer": false }
         ]
       },
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (3)",
+        "question": "Ano ang nangyari kay Berto Sea Lion habang naglalakbay?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": true
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": false
-          }
+          { "choice": "Nakatagpo ng kaibigan", "isAnswer": false },
+          { "choice": "Naligaw sa teritoryo ng mga Tuna", "isAnswer": true },
+          { "choice": "Nakahuli ng isda", "isAnswer": false },
+          { "choice": "Nakauwi agad", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Sino ang namuno sa grupong sumunod kay Berto?",
+        "choices": [
+          { "choice": "Diego", "isAnswer": false },
+          { "choice": "Berto", "isAnswer": false },
+          { "choice": "Pablo", "isAnswer": true },
+          { "choice": "Marco", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang ginawa ng grupo nina Pablo na Tuna kay Berto?",
+        "choices": [
+          { "choice": "Tinulungan siyang makauwi", "isAnswer": false },
+          { "choice": "Pinayuhan siyang magpahinga", "isAnswer": false },
+          { "choice": "Sinundan at binangga siya", "isAnswer": true },
+          { "choice": "Nakipaglaro sa kanya", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang kalagayan ni Berto bago dumating si Diego?",
+        "choices": [
+          { "choice": "Masaya", "isAnswer": false },
+          { "choice": "Malakas pa", "isAnswer": false },
+          { "choice": "Pagod at nanghihina", "isAnswer": true },
+          { "choice": "Galit", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Sino ang tumulong kay Berto Sea Lion mula sa kapahamakan?",
+        "choices": [
+          { "choice": "Pablo na Tuna", "isAnswer": false },
+          { "choice": "Isang dolphin", "isAnswer": false },
+          { "choice": "Isang pagong", "isAnswer": false },
+          { "choice": "Diego na Puting Pating", "isAnswer": true }
+        ]
+      },
+      {
+        "question": "Ano ang ginawa ni Diego sa grupo ng mga Tuna?",
+        "choices": [
+          { "choice": "Kinaibigan sila", "isAnswer": false },
+          { "choice": "Tinulungan silang manghuli", "isAnswer": false },
+          { "choice": "Itinaboy sila", "isAnswer": true },
+          { "choice": "Pinagsabihan lamang", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang natuklasan nina Berto at Diego bago sila maghiwalay?",
+        "choices": [
+          { "choice": "Magkamag-anak sila", "isAnswer": false },
+          { "choice": "Magkaaway pala sila noon", "isAnswer": false },
+          { "choice": "Dating tinulungan ni Berto si Diego", "isAnswer": true },
+          { "choice": "Pareho silang naligaw", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang pangunahing aral ng pabula?",
+        "choices": [
+          { "choice": "Mas malakas ang maraming magkakasama", "isAnswer": false },
+          { "choice": "Ang kabutihan ay bumabalik sa gumagawa nito", "isAnswer": true },
+          { "choice": "Masama ang tumulong sa iba", "isAnswer": false },
+          { "choice": "Dapat laging lumaban", "isAnswer": false }
         ]
       }
     ]

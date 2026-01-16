@@ -1,24 +1,92 @@
 import 'package:flutter/material.dart';
+import 'package:juanlalakbay/widgets/button.dart';
 
-class StoryCard extends StatelessWidget {
+class StoryCard extends StatefulWidget {
   final String title;
   final String story;
   final double width;
   final double height;
+  final VoidCallback? onLastPageCallback;
+  final VoidCallback? onNotLastPageCallback;
 
   const StoryCard({
     super.key,
     required this.title,
     required this.story,
+    this.onLastPageCallback,
+    this.onNotLastPageCallback,
     this.width = 400,
     this.height = 300,
   });
 
   @override
+  State<StoryCard> createState() => _StoryCardState();
+}
+
+class _StoryCardState extends State<StoryCard> {
+  static const int charsPerPage = 175;
+  late final List<String> pages;
+  int currentPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    pages = _splitIntoPages(widget.story);
+  }
+
+  List<String> _splitIntoPages(String text) {
+    final words = text.split(RegExp(r'\s+'));
+    final List<String> result = [];
+
+    String currentPage = '';
+
+    for (final word in words) {
+      final nextLength = currentPage.isEmpty
+          ? word.length
+          : currentPage.length + 1 + word.length;
+
+      if (nextLength <= charsPerPage) {
+        currentPage = currentPage.isEmpty ? word : '$currentPage $word';
+      } else {
+        result.add(currentPage);
+        currentPage = word;
+      }
+    }
+
+    if (currentPage.isNotEmpty) {
+      result.add(currentPage);
+    }
+
+    return result;
+  }
+
+  void nextPage() {
+    if (currentPage == pages.length - 2) {
+      // about to reach last page
+      widget.onLastPageCallback?.call();
+    }
+
+    if (currentPage < pages.length - 1) {
+      setState(() => currentPage++);
+    }
+  }
+
+  void prevPage() {
+    if (currentPage == pages.length - 1) {
+      // leaving last page
+      widget.onNotLastPageCallback?.call();
+    }
+
+    if (currentPage > 0) {
+      setState(() => currentPage--);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
-      width: width,
-      height: height,
+      width: widget.width,
+      height: widget.height,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
@@ -37,13 +105,12 @@ class StoryCard extends StatelessWidget {
         border: Border.all(color: Colors.orange.shade700, width: 3),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Title
+          /// TITLE
           Text(
-            title,
+            widget.title,
             style: const TextStyle(
-              fontSize: 20,
+              fontSize: 22,
               fontWeight: FontWeight.w900,
               color: Colors.black87,
               shadows: [
@@ -54,21 +121,64 @@ class StoryCard extends StatelessWidget {
                 ),
               ],
             ),
+            textAlign: TextAlign.center,
           ),
+
           const SizedBox(height: 12),
 
-          // Story
+          /// STORY TEXT
           Expanded(
-            child: SingleChildScrollView(
+            child: Center(
               child: Text(
-                story,
+                pages[currentPage],
                 style: const TextStyle(
                   fontSize: 16,
+                  height: 1.5,
                   color: Colors.black87,
-                  height: 1.4,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 12),
+
+          /// PAGE INDICATOR
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              pages.length,
+              (index) => Container(
+                margin: const EdgeInsets.symmetric(horizontal: 3),
+                width: 8,
+                height: 8,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: index == currentPage
+                      ? Colors.orange.shade800
+                      : Colors.orange.shade200,
                 ),
               ),
             ),
+          ),
+
+          const SizedBox(height: 8),
+
+          /// NAV BUTTONS
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GameButton(
+                text: "◀",
+                enabled: currentPage > 0,
+                onPressed: prevPage,
+              ),
+              GameButton(
+                text: "▶",
+                enabled: currentPage < pages.length - 1, // disable on last page
+                onPressed: nextPage,
+              ),
+            ],
           ),
         ],
       ),
