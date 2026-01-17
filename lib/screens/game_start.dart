@@ -155,7 +155,12 @@ class _GameStartState extends State<GameStart> {
     }
 
     currentProgress.completedLevels.add(level.level);
-    currentProgress.defeatedEnemies.add(level.characters[1]);
+    // Mark all enemies as defeated
+    level.characters.sublist(1).forEach((enemy) {
+      if (!currentProgress.defeatedEnemies.contains(enemy)) {
+        currentProgress.defeatedEnemies.add(enemy);
+      }
+    });
     currentProgress.currentLevel += 1;
 
     hiveService.saveGameProgress(currentProgress);
