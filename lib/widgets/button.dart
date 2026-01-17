@@ -5,7 +5,8 @@ enum GameButtonType { normal, success, danger, info }
 enum GameButtonSize { normal, small }
 
 class GameButton extends StatefulWidget {
-  final String text;
+  final String? text;
+  final IconData? icon;
   final VoidCallback onPressed;
   final GameButtonType type;
   final bool enabled;
@@ -13,11 +14,12 @@ class GameButton extends StatefulWidget {
 
   const GameButton({
     super.key,
-    required this.text,
+    this.text,
     required this.onPressed,
     this.enabled = true,
     this.type = GameButtonType.normal,
     this.size = GameButtonSize.normal, // DEFAULT
+    this.icon,
   });
 
   @override
@@ -29,6 +31,7 @@ class _GameButtonState extends State<GameButton> {
 
   // ───────── SIZE CONFIG ─────────
   double get _fontSize => widget.size == GameButtonSize.small ? 14 : 20;
+  double get _iconSize => widget.size == GameButtonSize.small ? 18 : 24;
 
   EdgeInsets get _padding => widget.size == GameButtonSize.small
       ? const EdgeInsets.symmetric(horizontal: 20, vertical: 10)
@@ -87,6 +90,26 @@ class _GameButtonState extends State<GameButton> {
     }
   }
 
+  Widget _buildGameIcon() {
+    return Stack(
+      children: [
+        // Shadow / outline
+        Positioned(
+          left: 1.5,
+          top: 1.5,
+          child: Icon(
+            widget.icon,
+            size: _iconSize,
+            color: Colors.black.withOpacity(0.5),
+          ),
+        ),
+
+        // Main icon
+        Icon(widget.icon, size: _iconSize, color: Colors.white),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -130,22 +153,37 @@ class _GameButtonState extends State<GameButton> {
           ),
           child: Opacity(
             opacity: widget.enabled ? 1.0 : 0.6,
-            child: Text(
-              widget.text,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: _fontSize,
-                fontWeight: FontWeight.w900,
-                color: Colors.white,
-                shadows: const [
-                  Shadow(
-                    offset: Offset(0, 2),
-                    blurRadius: 0,
-                    color: Colors.black45,
+            child: widget.text == null && widget.icon != null
+                // ONLY ICON -> center it
+                ? Center(child: _buildGameIcon())
+                // ICON + TEXT -> keep row
+                : Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (widget.icon != null) ...[
+                        _buildGameIcon(),
+                        if (widget.text != null) const SizedBox(width: 8),
+                      ],
+                      if (widget.text != null)
+                        Text(
+                          widget.text!,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: _fontSize,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.white,
+                            shadows: const [
+                              Shadow(
+                                offset: Offset(0, 2),
+                                blurRadius: 0,
+                                color: Colors.black45,
+                              ),
+                            ],
+                          ),
+                        ),
+                    ],
                   ),
-                ],
-              ),
-            ),
           ),
         ),
       ),

@@ -394,7 +394,10 @@ class _GameStartState extends State<GameStart> {
                 // Top left navigation bar
                 SafeArea(
                   child: Container(
-                    padding: EdgeInsets.only(top: 8.0),
+                    padding: EdgeInsets.symmetric(
+                      vertical: 8.0,
+                      horizontal: 16.0,
+                    ),
                     alignment: Alignment.topLeft,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -404,7 +407,8 @@ class _GameStartState extends State<GameStart> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             GameButton(
-                              text: "◀",
+                              text: "",
+                              icon: Icons.arrow_back_ios_new,
                               onPressed: () {
                                 Navigator.pop(context);
                               },
@@ -431,15 +435,13 @@ class _GameStartState extends State<GameStart> {
 
                 // Susunod Button
                 (showSusunodButton)
-                    ? Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Container(
-                          alignment: Alignment.bottomRight,
-                          child: GameButton(
-                            onPressed: susunod,
-                            text: 'Susunod',
-                            enabled: onLastPage,
-                          ),
+                    ? Positioned(
+                        right: 16.0,
+                        bottom: 32.0,
+                        child: GameButton(
+                          onPressed: susunod,
+                          text: 'Susunod',
+                          enabled: onLastPage,
                         ),
                       )
                     : Container(),

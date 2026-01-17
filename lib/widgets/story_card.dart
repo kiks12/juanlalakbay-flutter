@@ -144,14 +144,14 @@ class _StoryCardState extends State<StoryCard> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GameButton(
-                text: "◀",
+                icon: Icons.arrow_back_ios_new,
                 enabled: currentPage > 0,
                 onPressed: prevPage,
                 size: GameButtonSize.small,
               ),
               GameText(text: "Bilang ng salita: $totalWords", fontSize: 14),
               GameButton(
-                text: "▶",
+                icon: Icons.arrow_forward_ios,
                 enabled: currentPage < pages.length - 1, // disable on last page
                 onPressed: nextPage,
                 size: GameButtonSize.small,

@@ -262,11 +262,16 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
                     children: [
                       // GameText(text: "Juanlalakbay", fontSize: 64),
                       // Spacer(),
-                      GameButton(text: "Sulong", onPressed: startGame),
+                      GameButton(
+                        text: "Sulong",
+                        icon: Icons.play_arrow_rounded,
+                        onPressed: startGame,
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: GameButton(
                           text: "Certificates",
+                          icon: Icons.book_rounded,
                           onPressed: navigateToCertificatesScreen,
                           type: GameButtonType.info,
                         ),
