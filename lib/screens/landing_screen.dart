@@ -158,9 +158,8 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
         3: 350,
         4: 20,
         5: 20,
-        6: -150,
+        6: -100,
         7: 320,
-        8: 400,
       },
     );
 
@@ -204,17 +203,26 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
                     child: Stack(
                       children: [
                         // Philippines map now scrolls with content
-                        Image.asset(
-                          'assets/backgrounds/philippines.png',
-                          fit: BoxFit.cover,
-                          width: screenWidth,
-                          height: nodes.last.dy + 200,
+                        Transform.translate(
+                          offset: Offset(
+                            offsetX,
+                            0,
+                          ), // offsetX can be positive or negative
+                          child: Image.asset(
+                            'assets/backgrounds/philippines.png',
+                            fit: BoxFit.cover,
+                            width: screenWidth,
+                            height: nodes.last.dy + 200,
+                          ),
                         ),
 
                         // Path
                         CustomPaint(
                           size: Size(screenWidth, nodes.last.dy + 200),
-                          painter: SmoothSCurvePainter(nodes, offsetX: offsetX),
+                          painter: SmoothSCurvePainter(
+                            nodes,
+                            offsetX: offsetX * 2,
+                          ),
                         ),
 
                         // Markers ON the path
@@ -227,7 +235,7 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
                           final pos = nodes[index];
 
                           return Positioned(
-                            left: pos.dx - 32 + offsetX,
+                            left: pos.dx - 32 + (offsetX * 2),
                             top: pos.dy - 32,
                             child: LevelMarker(
                               level: level.level,
