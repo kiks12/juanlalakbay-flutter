@@ -403,11 +403,13 @@ class _GameStartState extends State<GameStart> {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            IconButton.filledTonal(
+                            GameButton(
+                              text: "◀",
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              icon: Icon(Icons.arrow_back),
+                              type: GameButtonType.info,
+                              size: GameButtonSize.small,
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 8.0),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:juanlalakbay/models/game_progress.dart';
 import 'package:juanlalakbay/screens/hive_service.dart';
+import 'package:juanlalakbay/widgets/button.dart';
 import 'package:juanlalakbay/widgets/text.dart';
 
 class CertificateScreen extends StatefulWidget {
@@ -240,11 +241,13 @@ class _CertificateScreenState extends State<CertificateScreen> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  IconButton.filledTonal(
+                  GameButton(
+                    text: "◀",
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(Icons.arrow_back),
+                    type: GameButtonType.info,
+                    size: GameButtonSize.small,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0),

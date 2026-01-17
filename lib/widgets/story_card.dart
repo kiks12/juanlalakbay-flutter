@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:juanlalakbay/widgets/button.dart';
+import 'package:juanlalakbay/widgets/text.dart';
 
 class StoryCard extends StatefulWidget {
   final String title;
@@ -27,6 +28,7 @@ class _StoryCardState extends State<StoryCard> {
   static const int charsPerPage = 250;
   late final List<String> pages;
   int currentPage = 0;
+  int totalWords = 0;
 
   @override
   void initState() {
@@ -41,6 +43,7 @@ class _StoryCardState extends State<StoryCard> {
     String currentPage = '';
 
     for (final word in words) {
+      totalWords++;
       final nextLength = currentPage.isEmpty
           ? word.length
           : currentPage.length + 1 + word.length;
@@ -109,15 +112,7 @@ class _StoryCardState extends State<StoryCard> {
           /// STORY TEXT
           Expanded(
             child: Center(
-              child: Text(
-                pages[currentPage],
-                style: const TextStyle(
-                  fontSize: 16,
-                  height: 1.5,
-                  color: Colors.black87,
-                ),
-                textAlign: TextAlign.center,
-              ),
+              child: GameText(text: pages[currentPage], fontSize: 17),
             ),
           ),
 
@@ -152,11 +147,14 @@ class _StoryCardState extends State<StoryCard> {
                 text: "◀",
                 enabled: currentPage > 0,
                 onPressed: prevPage,
+                size: GameButtonSize.small,
               ),
+              GameText(text: "Bilang ng salita: $totalWords", fontSize: 14),
               GameButton(
                 text: "▶",
                 enabled: currentPage < pages.length - 1, // disable on last page
                 onPressed: nextPage,
+                size: GameButtonSize.small,
               ),
             ],
           ),
