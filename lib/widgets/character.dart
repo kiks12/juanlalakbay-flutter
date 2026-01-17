@@ -178,19 +178,33 @@ class CharacterGroupState extends State<CharacterGroup>
   // ───────────────── CHARACTER TILE ─────────────────
   Widget _buildCharacter(String name) {
     return Stack(
+      alignment: Alignment.center,
       children: [
+        // ───── OVAL SHADOW ─────
+        Positioned(
+          bottom: 4,
+          child: Transform(
+            alignment: Alignment.bottomCenter, // squash from the bottom
+            transform: Matrix4.diagonal3Values(
+              1.2,
+              0.25,
+              1,
+            ), // width x, height y
+            child: Container(
+              width: widget.size * 0.6,
+              height: widget.size * 0.6,
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.3),
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+        ),
+
+        // ───── CHARACTER IMAGE ─────
         Container(
           width: widget.size,
           height: widget.size,
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.25),
-                offset: const Offset(0, 4),
-                blurRadius: 4,
-              ),
-            ],
-          ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(12),
             child: Image.asset(
@@ -199,14 +213,15 @@ class CharacterGroupState extends State<CharacterGroup>
             ),
           ),
         ),
-        // DAMAGE FLASH
+
+        // ───── DAMAGE FLASH ─────
         if (_controller.isAnimating)
           Container(
-            width: widget.size,
-            height: widget.size,
+            width: widget.size / 1.5,
+            height: widget.size / 1.5,
             decoration: BoxDecoration(
               color: _flash.value,
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(100),
             ),
           ),
       ],

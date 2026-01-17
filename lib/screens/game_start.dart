@@ -354,40 +354,58 @@ class _GameStartState extends State<GameStart> {
                         ),
                       )
                     : Container(),
+
+                // Main characters and story/questions layout
                 SafeArea(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 16.0),
-                          child: CharacterGroup(
-                            key: playerKey,
-                            currentHealth: playerHealth,
-                            type: HealthBarType.player,
-                            names: ['juan'],
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      // constraints.maxWidth: total width of SafeArea
+                      // constraints.maxHeight: total height of SafeArea
+
+                      // Each side Expanded takes ~1/3 of width
+                      final characterSize = constraints.maxWidth / 3;
+
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 16.0),
+                              child: CharacterGroup(
+                                key: playerKey,
+                                currentHealth: playerHealth,
+                                type: HealthBarType.player,
+                                names: ['juan'],
+                                size: characterSize / 3,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: Center(
-                          child: ConstrainedBox(
-                            constraints: const BoxConstraints(maxWidth: 420),
-                            child: buildQuizContent(),
+                          Expanded(
+                            flex: 2,
+                            child: Center(
+                              child: ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  maxWidth: 420 > characterSize / 2
+                                      ? 420
+                                      : characterSize / 2,
+                                ),
+                                child: buildQuizContent(),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      Expanded(
-                        child: CharacterGroup(
-                          key: villainKey,
-                          currentHealth: villainHealth,
-                          type: HealthBarType.villain,
-                          names: level.characters.sublist(1),
-                        ),
-                      ),
-                    ],
+                          Expanded(
+                            child: CharacterGroup(
+                              key: villainKey,
+                              currentHealth: villainHealth,
+                              type: HealthBarType.villain,
+                              names: level.characters.sublist(1),
+                              size: characterSize / 4,
+                            ),
+                          ),
+                        ],
+                      );
+                    },
                   ),
                 ),
 
