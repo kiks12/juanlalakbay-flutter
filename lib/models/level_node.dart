@@ -25,14 +25,29 @@ List<LevelNode> generateLevelNodes({
 }
 
 // Generate level nodes in an S-shaped pattern
-List<Offset> generateSCurvePoints({required int count, required double width}) {
+List<Offset> generateSCurvePoints({
+  required int count,
+  required double width,
+  Map<int, double>? customYOffsets, // index -> extra y offset
+  Map<int, double>? customXOffsets, // index -> extra x offset
+}) {
   const double verticalSpacing = 140;
   const double amplitude = 120;
 
   return List.generate(count, (i) {
-    final y = i * verticalSpacing + 100;
-    final x =
+    double y = i * verticalSpacing + 100;
+    double x =
         width / 2 + amplitude * Math.sin(i * Math.pi / 2); // quarter-wave steps
+
+    // Apply custom x offset if provided
+    if (customXOffsets != null && customXOffsets.containsKey(i)) {
+      x += customXOffsets[i]!;
+    }
+
+    // Apply custom y offset if provided
+    if (customYOffsets != null && customYOffsets.containsKey(i)) {
+      y += customYOffsets[i]!;
+    }
 
     return Offset(x, y);
   });

@@ -138,7 +138,31 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
 
-    nodes = generateSCurvePoints(count: levels.length, width: screenWidth);
+    nodes = generateSCurvePoints(
+      count: levels.length,
+      width: screenWidth,
+      customYOffsets: {
+        0: -50,
+        1: 10,
+        2: 50,
+        3: 30,
+        4: -10,
+        5: 20,
+        6: 0,
+        7: -80,
+      },
+      customXOffsets: {
+        0: -20,
+        1: -40,
+        2: -10,
+        3: 350,
+        4: 20,
+        5: 20,
+        6: -150,
+        7: 320,
+        8: 400,
+      },
+    );
 
     return Scaffold(
       body: loading
