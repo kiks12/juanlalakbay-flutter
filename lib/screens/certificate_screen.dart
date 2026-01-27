@@ -43,7 +43,7 @@ class _CertificateScreenState extends State<CertificateScreen> {
     final List<String> certs = [];
 
     if (level > 3) certs.add('TULA');
-    if (level > 6) certs.add('PABULA');
+    if (level > 7) certs.add('PABULA');
     if (level >= 10) certs.add('MAIKLING KUWENTO');
 
     return certs;
