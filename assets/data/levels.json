@@ -2,70 +2,112 @@
   {
     "level": 1,
     "type": "TULA",
-    "title": "Example Title",
-    "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec risus mi, porta eu mi ut, molestie condimentum neque. Curabitur sed mattis elit. Sed rhoncus urna arcu. Vestibulum sit amet velit dictum ipsum cursus finibus. Aliquam ac lobortis sapien. Suspendisse euismod feugiat pellentesque. Proin luctus elementum dolor, in pellentesque velit maximus eget. Donec dignissim orci id viverra finibus.",
-    "characters": ["character", "villain"],
-    "setting": "setting",
+    "title": "FIESTA",
+    "story": "Isang pagdiriwang na kay saya,\nPuno ng kulay at ligaya,\npasasalamat sa patron at masaganang ani,\nyan ang pista sa bayan nating tinatangi.",
+    "characters": ["juan", "maskara", "higante"],
+    "setting": "baranggay",
     "questions": [
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "question": "Ano ang ipinagdiriwang sa tula?",
         "choices": [
           {
-            "choice": "Choice 1",
+            "choice": "Araw ng kalayaan",
             "isAnswer": false
           },
           {
-            "choice": "Choice 2",
+            "choice": "Kaarawan ng bayan",
             "isAnswer": false
           },
           {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": true
-          }
-        ]
-      },
-      {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (2)",
-        "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 2",
+            "choice": "Pista sa bayan",
             "isAnswer": true
           },
           {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
+            "choice": "Panahon ng tag-ulan",
             "isAnswer": false
           }
         ]
       },
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (3)",
+        "question": "Ano ang nangingibabaw na damdamin sa tula?",
         "choices": [
           {
-            "choice": "Choice 1",
+            "choice": "Takot",
+            "isAnswer": false
+          },
+          {
+            "choice": "Lungkot",
+            "isAnswer": false
+          },
+          {
+            "choice": "Galit",
+            "isAnswer": false
+          },
+          {
+            "choice": "Saya",
+            "isAnswer": true
+          }
+        ]
+      },
+      {
+        "question": "Ano ang ipinahihiwatig ng salitang “masaganang ani”?",
+        "choices": [
+          {
+            "choice": "Kakulangan sa pagkain",
+            "isAnswer": false
+          },
+          {
+            "choice": "Maraming problema",
+            "isAnswer": false
+          },
+          {
+            "choice": "Maraming biyaya",
             "isAnswer": true
           },
           {
-            "choice": "Choice 2",
+            "choice": "Maraming tao",
+            "isAnswer": false
+          }
+        ]
+      },
+      {
+        "question": "Ano ang ibig ipahiwatig ng salitang tinatangi sa huling linya?",
+        "choices": [
+          {
+            "choice": "Kinakalimutan",
             "isAnswer": false
           },
           {
-            "choice": "Choice 3",
+            "choice": "Iniiwasan",
             "isAnswer": false
           },
           {
-            "choice": "Choice 4",
+            "choice": "Pinahahalagahan",
+            "isAnswer": true
+          },
+          {
+            "choice": "Kinakatakutan",
+            "isAnswer": false
+          }
+        ]
+      },
+      {
+        "question": "Ano ang mensaheng nais iparating ng tula?",
+        "choices": [
+          {
+            "choice": "Mahalaga ang pista bilang pasasalamat at pagkakaisa",
+            "isAnswer": true
+          },
+          {
+            "choice": "Nakakapagod ang pagdiriwang",
+            "isAnswer": false
+          },
+          {
+            "choice": "Walang saysay ang pista",
+            "isAnswer": false
+          },
+          {
+            "choice": "Mas mabuting walang selebrasyon",
             "isAnswer": false
           }
         ]
@@ -75,70 +117,112 @@
   {
     "level": 2,
     "type": "TULA",
-    "title": "Example Title 2",
-    "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec risus mi, porta eu mi ut, molestie condimentum neque. Curabitur sed mattis elit. Sed rhoncus urna arcu. Vestibulum sit amet velit dictum ipsum cursus finibus. Aliquam ac lobortis sapien. Suspendisse euismod feugiat pellentesque. Proin luctus elementum dolor, in pellentesque velit maximus eget. Donec dignissim orci id viverra finibus.",
-    "characters": ["character", "villain2"],
-    "setting": "setting",
+    "title": "GITARA",
+    "story": "Sa bawat kuwerdas na aking tinitipa,\nDala nito sa akin ay ligaya.\nGitara kong kasama sa lungkot at saya,\nHabang ito ay tumutunog napapawi ang problema.",
+    "characters": ["juan", "gitara"],
+    "setting": "kwarto",
     "questions": [
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "question": "Ano ang pangunahing damdaming ipinapahayag sa tula?",
         "choices": [
           {
-            "choice": "Choice 1",
+            "choice": "Galit",
             "isAnswer": false
           },
           {
-            "choice": "Choice 2",
+            "choice": "Inggit",
             "isAnswer": false
           },
           {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": true
-          }
-        ]
-      },
-      {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (2)",
-        "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 2",
+            "choice": "Ligaya",
             "isAnswer": true
           },
           {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
+            "choice": "Takot",
             "isAnswer": false
           }
         ]
       },
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (3)",
+        "question": "Anong instrumento ang binanggit sa tula?",
         "choices": [
           {
-            "choice": "Choice 1",
+            "choice": "Biyolin",
+            "isAnswer": false
+          },
+          {
+            "choice": "Gitara",
             "isAnswer": true
           },
           {
-            "choice": "Choice 2",
+            "choice": "Piano",
             "isAnswer": false
           },
           {
-            "choice": "Choice 3",
+            "choice": "Tambol",
+            "isAnswer": false
+          }
+        ]
+      },
+      {
+        "question": "Ano ang simbolismo ng gitara sa tula?",
+        "choices": [
+          {
+            "choice": "Kayamanan",
             "isAnswer": false
           },
           {
-            "choice": "Choice 4",
+            "choice": "Kaibigan at aliw sa buhay",
+            "isAnswer": true
+          },
+          {
+            "choice": "Parusa",
+            "isAnswer": false
+          },
+          {
+            "choice": "Palamuti",
+            "isAnswer": false
+          }
+        ]
+      },
+      {
+        "question": "Ano ang epekto ng pagtugtog ng gitara sa nagsasalita?",
+        "choices": [
+          {
+            "choice": "Nadadagdagan ang problema",
+            "isAnswer": false
+          },
+          {
+            "choice": "Nakakalimot sa oras",
+            "isAnswer": false
+          },
+          {
+            "choice": "Napapawi ang problema",
+            "isAnswer": true
+          },
+          {
+            "choice": "Nawawala ang kaibigan",
+            "isAnswer": false
+          }
+        ]
+      },
+      {
+        "question": "Ano ang mensaheng nais iparating ng tula?",
+        "choices": [
+          {
+            "choice": "Mahirap matutong tumugtog",
+            "isAnswer": false
+          },
+          {
+            "choice": "Nakakapagod ang musika",
+            "isAnswer": false
+          },
+          {
+            "choice": "Nakakatulong ang musika sa pag-alis ng problema",
+            "isAnswer": true
+          },
+          {
+            "choice": "Mas mahalaga ang katahimikan",
             "isAnswer": false
           }
         ]
@@ -148,70 +232,112 @@
   {
     "level": 3,
     "type": "TULA",
-    "title": "Example Title 3",
-    "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec risus mi, porta eu mi ut, molestie condimentum neque. Curabitur sed mattis elit. Sed rhoncus urna arcu. Vestibulum sit amet velit dictum ipsum cursus finibus. Aliquam ac lobortis sapien. Suspendisse euismod feugiat pellentesque. Proin luctus elementum dolor, in pellentesque velit maximus eget. Donec dignissim orci id viverra finibus.",
-    "characters": ["character", "villain3"],
-    "setting": "setting",
+    "title": "TAMBOL",
+    "story": "Sa bawat hampas at palo ng tambol,\nHimig nito sa tenga ko'y bumabaon.\nTunog nito na masigla at kay ligaya,\nNapapaindak nito ang bawat isa.",
+    "characters": ["juan", "tambol"],
+    "setting": "bayan",
     "questions": [
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "question": "Anong instrumento ang tinutukoy sa tula?",
         "choices": [
           {
-            "choice": "Choice 1",
+            "choice": "Gitara",
             "isAnswer": false
           },
           {
-            "choice": "Choice 2",
+            "choice": "Piano",
             "isAnswer": false
           },
           {
-            "choice": "Choice 3",
+            "choice": "Plawta",
             "isAnswer": false
           },
           {
-            "choice": "Choice 4",
+            "choice": "Tambol",
             "isAnswer": true
           }
         ]
       },
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (2)",
+        "question": "Anong damdamin ang nangingibabaw sa tula?",
         "choices": [
           {
-            "choice": "Choice 1",
+            "choice": "Galit",
             "isAnswer": false
           },
           {
-            "choice": "Choice 2",
+            "choice": "Takot",
+            "isAnswer": false
+          },
+          {
+            "choice": "Ligaya",
             "isAnswer": true
           },
           {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
+            "choice": "Lungkot",
             "isAnswer": false
           }
         ]
       },
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (3)",
+        "question": "Bakit sinasabing “bumabaon sa tenga” ang himig ng tambol?",
         "choices": [
           {
-            "choice": "Choice 1",
+            "choice": "Dahil ito ay mahina",
+            "isAnswer": false
+          },
+          {
+            "choice": "Dahil ito ay nakakatakot",
+            "isAnswer": false
+          },
+          {
+            "choice": "Dahil ito ay madaling makalimutan",
+            "isAnswer": false
+          },
+          {
+            "choice": "Dahil ito ay malakas at tumatatak sa isipan",
+            "isAnswer": true
+          }
+        ]
+      },
+      {
+        "question": "Paano inilarawan ang tunog ng tambol sa tula?",
+        "choices": [
+          {
+            "choice": "Mabigat at nakakabagot",
+            "isAnswer": false
+          },
+          {
+            "choice": "Malungkot at mabagal",
+            "isAnswer": false
+          },
+          {
+            "choice": "Masigla at kay ligaya",
             "isAnswer": true
           },
           {
-            "choice": "Choice 2",
+            "choice": "Tahimik at mabagal",
+            "isAnswer": false
+          }
+        ]
+      },
+      {
+        "question": "Ano ang nagagawa ng tunog ng tambol sa mga tao?",
+        "choices": [
+          {
+            "choice": "Napapaindak ang bawat isa",
+            "isAnswer": true
+          },
+          {
+            "choice": "Pinatatakbo ang bawat isa",
             "isAnswer": false
           },
           {
-            "choice": "Choice 3",
+            "choice": "Pinapaiyak ang lahat",
             "isAnswer": false
           },
           {
-            "choice": "Choice 4",
+            "choice": "Pinatutulog ang lahat",
             "isAnswer": false
           }
         ]
@@ -520,73 +646,100 @@
   },
   {
     "level": 7,
-    "type": "MAIKLING KUWENTO",
-    "title": "Example Title 7",
-    "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec risus mi, porta eu mi ut, molestie condimentum neque. Curabitur sed mattis elit. Sed rhoncus urna arcu. Vestibulum sit amet velit dictum ipsum cursus finibus. Aliquam ac lobortis sapien. Suspendisse euismod feugiat pellentesque. Proin luctus elementum dolor, in pellentesque velit maximus eget. Donec dignissim orci id viverra finibus.",
-    "characters": ["character", "villain7"],
-    "setting": "setting",
+    "type": "PABULA",
+    "title": "Ang Lamok at ang Palaka",
+    "story": "Isang gabi habang naghahanap ng pagkain si Mario na isang palaka sa kagubatan na maraming lamok, nakita siya ng hari ng mga lamok na ang pangalan ay Rudolfo. Si Rudolfo ay tatawid ng ilog dahil papunta ito sa kabilang baryo upang makipagkita sa kanyang kasintahan na si Becka na isa ring prinsesa sa kanilang nayon. Hindi pa nakakalayo si Rudolfo nang siya ay makita ni Mario kaya agad niya itong hinabol upang gawing hapunan. Inabot ng hatinggabi ang kanilang paghahabulan at nag-alala si Becka. Mula sa kabilang ilog ay nakita niyang hinahabol si Rudolfo ni Mario kaya agad siyang humingi ng tulong. Dumating ang mga lamok at nailigtas si Rudolfo. Napatunayan nila na walang anumang hadlang ang kayang pumigil sa tunay na pag-ibig.",
+    "characters": ["juan", "lamok", "palaka"],
+    "setting": "guba-na-may-ilog",
     "questions": [
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "question": "Sino si Mario sa kuwento?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": true
-          }
+          { "choice": "Isang ahas", "isAnswer": false },
+          { "choice": "Isang palaka", "isAnswer": true },
+          { "choice": "Isang ibon", "isAnswer": false },
+          { "choice": "Isang isda", "isAnswer": false }
         ]
       },
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (2)",
+        "question": "Ano ang ginagawa ni Mario sa simula ng kuwento?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": true
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": false
-          }
+          { "choice": "Natutulog sa lawa", "isAnswer": false },
+          { "choice": "Naghahanap ng kaibigan", "isAnswer": false },
+          { "choice": "Naghahanap ng pagkain", "isAnswer": true },
+          { "choice": "Tumatawid ng ilog", "isAnswer": false }
         ]
       },
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (3)",
+        "question": "Sino si Rudolfo?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": true
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": false
-          }
+          { "choice": "Prinsipe ng palaka", "isAnswer": false },
+          { "choice": "Karaniwang lamok", "isAnswer": false },
+          { "choice": "Hari ng mga lamok", "isAnswer": true },
+          { "choice": "Kaibigan ni Mario", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Saan papunta si Rudolfo?",
+        "choices": [
+          { "choice": "Sa gubat", "isAnswer": false },
+          { "choice": "Sa lawa", "isAnswer": false },
+          { "choice": "Sa kabilang baryo", "isAnswer": true },
+          { "choice": "Sa bundok", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Bakit tatawid ng ilog si Rudolfo?",
+        "choices": [
+          { "choice": "Para maghanap ng pagkain", "isAnswer": false },
+          { "choice": "Para makipagkita sa kanyang kasintahan", "isAnswer": true },
+          { "choice": "Para tumakas kay Mario", "isAnswer": false },
+          { "choice": "Para maglaro", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang ginawa ni Mario nang makita si Rudolfo?",
+        "choices": [
+          { "choice": "Tinulungan siya", "isAnswer": false },
+          { "choice": "Pinanood lamang", "isAnswer": false },
+          { "choice": "Hinabol siya", "isAnswer": true },
+          { "choice": "Kinaibigan siya", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Sino si Becka sa kuwento?",
+        "choices": [
+          { "choice": "Kaibigan ni Mario", "isAnswer": false },
+          { "choice": "Isang palaka", "isAnswer": false },
+          { "choice": "Prinsesa ng mga lamok", "isAnswer": true },
+          { "choice": "Reyna ng kagubatan", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Bakit nag-alala si Becka?",
+        "choices": [
+          { "choice": "Dahil may bagyo", "isAnswer": false },
+          { "choice": "Dahil hindi dumating si Rudolfo", "isAnswer": true },
+          { "choice": "Dahil nakita niya si Mario", "isAnswer": false },
+          { "choice": "Dahil naligaw siya", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Sino ang tumulong kay Rudolfo upang makatakas?",
+        "choices": [
+          { "choice": "Mga palaka", "isAnswer": false },
+          { "choice": "Mga ibon", "isAnswer": false },
+          { "choice": "Mga lamok", "isAnswer": true },
+          { "choice": "Mga isda", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang pangunahing aral ng pabula?",
+        "choices": [
+          { "choice": "Masama ang paghahabol", "isAnswer": false },
+          { "choice": "Walang hadlang ang hindi malalampasan ng tunay na pag-ibig", "isAnswer": true },
+          { "choice": "Dapat matakot sa palaka", "isAnswer": false },
+          { "choice": "Mas mabuti ang mag-isa", "isAnswer": false }
         ]
       }
     ]
