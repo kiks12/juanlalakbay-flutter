@@ -17,7 +17,7 @@ class StoryCard extends StatefulWidget {
     this.onLastPageCallback,
     this.onNotLastPageCallback,
     this.width = 450,
-    this.height = 300,
+    this.height = 250,
   });
 
   @override
@@ -25,7 +25,7 @@ class StoryCard extends StatefulWidget {
 }
 
 class _StoryCardState extends State<StoryCard> {
-  static const int charsPerPage = 250;
+  static const int charsPerPage = 200;
   late final List<String> pages;
   int currentPage = 0;
   int totalWords = 0;
@@ -34,6 +34,13 @@ class _StoryCardState extends State<StoryCard> {
   void initState() {
     super.initState();
     pages = _splitIntoPages(widget.story);
+
+    // If there is only ONE page, notify parent AFTER build
+    if (pages.length == 1) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        widget.onLastPageCallback?.call();
+      });
+    }
   }
 
   List<String> _splitIntoPages(String text) {

@@ -400,7 +400,7 @@ class _GameStartState extends State<GameStart> {
                               currentHealth: villainHealth,
                               type: HealthBarType.villain,
                               names: level.characters.sublist(1),
-                              size: characterSize / 4,
+                              size: characterSize / 3,
                             ),
                           ),
                         ],
