@@ -47,18 +47,7 @@ class _StoryCardState extends State<StoryCard> {
   void initState() {
     super.initState();
 
-    // Append the panuto before the text, this is a quick fix only:
-    var finalText = "";
-    switch (widget.levelType) {
-      case LevelType.tula:
-        finalText += TULA_PANUTO;
-      case LevelType.pabula:
-        finalText += PABULA_PANUTO;
-      case LevelType.maiklingKuwento:
-        finalText += MAIKLING_KUWENTO_PANUTO;
-    }
-    finalText += "\n ${widget.story}";
-    pages = _splitIntoPages(finalText);
+    pages = _splitIntoPages(widget.story);
 
     // If there is only ONE page, notify parent AFTER build
     if (pages.length == 1) {
@@ -73,6 +62,16 @@ class _StoryCardState extends State<StoryCard> {
     final List<String> result = [];
 
     String currentPage = '';
+
+    // Append the panuto before the text, this is a quick fix only:
+    switch (widget.levelType) {
+      case LevelType.tula:
+        result.add(TULA_PANUTO);
+      case LevelType.pabula:
+        result.add(PABULA_PANUTO);
+      case LevelType.maiklingKuwento:
+        result.add(MAIKLING_KUWENTO_PANUTO);
+    }
 
     for (final word in words) {
       totalWords++;
