@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:juanlalakbay/models/level.dart';
 import 'package:juanlalakbay/widgets/button.dart';
 import 'package:juanlalakbay/widgets/text.dart';
 
 class StoryCard extends StatefulWidget {
   final String title;
+  final LevelType levelType;
   final String story;
   final double width;
   final double height;
@@ -13,6 +15,7 @@ class StoryCard extends StatefulWidget {
   const StoryCard({
     super.key,
     required this.title,
+    required this.levelType,
     required this.story,
     this.onLastPageCallback,
     this.onNotLastPageCallback,
@@ -25,7 +28,17 @@ class StoryCard extends StatefulWidget {
 }
 
 class _StoryCardState extends State<StoryCard> {
+  // ignore: constant_identifier_names
+  static const String MAIKLING_KUWENTO_PANUTO =
+      "PANUTO: Basahin at unawain ang akda. Piliin ang letra ng tamang  sagot sa bawat katanungan.";
+  // ignore: constant_identifier_names
+  static const String PABULA_PANUTO =
+      "PANUTO: Basahin at unawain ang  akda. Piliin ang letra ng tamang  sagot sa bawat katanungan.";
+  // ignore: constant_identifier_names
+  static const String TULA_PANUTO =
+      "PANUTO: Basahin at unawain ang tula. Piliin ang letra ng tamang  sagot sa bawat katanungan.";
   static const int charsPerPage = 200;
+
   late final List<String> pages;
   int currentPage = 0;
   int totalWords = 0;
@@ -33,7 +46,19 @@ class _StoryCardState extends State<StoryCard> {
   @override
   void initState() {
     super.initState();
-    pages = _splitIntoPages(widget.story);
+
+    // Append the panuto before the text, this is a quick fix only:
+    var finalText = "";
+    switch (widget.levelType) {
+      case LevelType.tula:
+        finalText += TULA_PANUTO;
+      case LevelType.pabula:
+        finalText += PABULA_PANUTO;
+      case LevelType.maiklingKuwento:
+        finalText += MAIKLING_KUWENTO_PANUTO;
+    }
+    finalText += "\n ${widget.story}";
+    pages = _splitIntoPages(finalText);
 
     // If there is only ONE page, notify parent AFTER build
     if (pages.length == 1) {

@@ -194,6 +194,7 @@ class _GameStartState extends State<GameStart> {
     if (showStory) {
       return StoryCard(
         title: level.title,
+        levelType: level.type,
         story: level.story,
         onLastPageCallback: () {
           setState(() {
