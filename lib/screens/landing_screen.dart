@@ -35,7 +35,7 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
   void initState() {
     super.initState();
     hiveService.init().then((_) {
-      hiveService.resetGameProgress(currentLevel: 4); // For testing
+      hiveService.resetGameProgress(currentLevel: 6); // For testing
     });
     loadGame();
   }

@@ -37,6 +37,7 @@ dependencies:
   hive: ^2.2.3
   path_provider: ^2.1.5
   build_runner: ^2.10.5
+  flutter_launcher_icons: ^0.14.4
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +52,13 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/logo.png"
+  # Optional: For Android adaptive icons (Android 8.0+), specify foreground and background
+  # adaptive_icon_background: "#ffffff"
+  # adaptive_icon_foreground: "assets/icon/foreground.png"
 
 # The following section is specific to Flutter packages.
 flutter:
