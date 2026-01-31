@@ -747,72 +747,99 @@
   {
     "level": 8,
     "type": "MAIKLING KUWENTO",
-    "title": "Example Title 8",
-    "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec risus mi, porta eu mi ut, molestie condimentum neque. Curabitur sed mattis elit. Sed rhoncus urna arcu. Vestibulum sit amet velit dictum ipsum cursus finibus. Aliquam ac lobortis sapien. Suspendisse euismod feugiat pellentesque. Proin luctus elementum dolor, in pellentesque velit maximus eget. Donec dignissim orci id viverra finibus.",
-    "characters": ["character", "villain8"],
-    "setting": "setting",
+    "title": "Ang Payapang Dagat",
+    "story": "Isang hapon, naglalakad si Tonio sa tabing dagat. Tahimik ang paligid at hampas lang ng alon at huni ng ibon ang kanyang naririnig, na ito ay tila isang awitin na nakakapawi ng mga pagod.\n\nUmakyat si Lino sa itaas ng puno at pinanood ang paglubog ng araw sa kanluran. Naramdaman niya ang kapayapaan sa paligid at saya sa kanyang puso at kanyang napagtanto na napakahalaga na ingatan natin ang karagatan.",
+    "characters": ["juan", "tonio"],
+    "setting": "dagat",
     "questions": [
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "question": "Sino ang naglalakad sa tabing dagat?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": true
-          }
+          { "choice": "Lino", "isAnswer": false },
+          { "choice": "Tonio", "isAnswer": true },
+          { "choice": "Mario", "isAnswer": false },
+          { "choice": "Pedro", "isAnswer": false }
         ]
       },
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (2)",
+        "question": "Saan naglalakad si Tonio?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": true
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": false
-          }
+          { "choice": "Sa bundok", "isAnswer": false },
+          { "choice": "Sa kagubatan", "isAnswer": false },
+          { "choice": "Sa tabing dagat", "isAnswer": true },
+          { "choice": "Sa palengke", "isAnswer": false }
         ]
       },
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (3)",
+        "question": "Ano ang oras ng naglalakad si Tonio?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": true
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": false
-          }
+          { "choice": "Tanghali", "isAnswer": false },
+          { "choice": "Hapon", "isAnswer": true },
+          { "choice": "Gabi", "isAnswer": false },
+          { "choice": "Umaga", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang naririnig ni Tonio habang naglalakad?",
+        "choices": [
+          { "choice": "Ingay ng sasakyan", "isAnswer": false },
+          { "choice": "Sigawan ng tao", "isAnswer": false },
+          { "choice": "Hampas ng alon at huni ng ibon", "isAnswer": true },
+          { "choice": "Tugtog ng radyo", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang pakiramdam na dulot ng tunog ng alon at ibon?",
+        "choices": [
+          { "choice": "Nakakatakot", "isAnswer": false },
+          { "choice": "Nakakapawi ng pagod", "isAnswer": true },
+          { "choice": "Nakakainis", "isAnswer": false },
+          { "choice": "Nakakalungkot", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Sino ang umakyat sa puno?",
+        "choices": [
+          { "choice": "Tonio", "isAnswer": false },
+          { "choice": "Lino", "isAnswer": true },
+          { "choice": "Juan", "isAnswer": false },
+          { "choice": "Andres", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang pinanood ni Lino mula sa puno?",
+        "choices": [
+          { "choice": "Pagsikat ng araw", "isAnswer": false },
+          { "choice": "Pag-ulan", "isAnswer": false },
+          { "choice": "Paglipad ng ibon", "isAnswer": false },
+          { "choice": "Paglubog ng araw", "isAnswer": true }
+        ]
+      },
+      {
+        "question": "Saan makikita ang paglubog ng araw?",
+        "choices": [
+          { "choice": "Silangan", "isAnswer": false },
+          { "choice": "Hilaga", "isAnswer": false },
+          { "choice": "Timog", "isAnswer": false },
+          { "choice": "Kanluran", "isAnswer": true }
+        ]
+      },
+      {
+        "question": "Ano ang naramdaman ni Lino sa paligid?",
+        "choices": [
+          { "choice": "Takot", "isAnswer": false },
+          { "choice": "Galit", "isAnswer": false },
+          { "choice": "Kapayapaan", "isAnswer": true },
+          { "choice": "Pagod", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang napagtanto ni Lino sa huli?",
+        "choices": [
+          { "choice": "Mahalaga ang pag-akyat sa puno", "isAnswer": false },
+          { "choice": "Mahalaga ang paglalakad sa umaga", "isAnswer": false },
+          { "choice": "Mahalaga ang ingatan ang karagatan", "isAnswer": true },
+          { "choice": "Mahalaga ang paglubog ng araw", "isAnswer": false }
         ]
       }
     ]
@@ -820,72 +847,199 @@
   {
     "level": 9,
     "type": "MAIKLING KUWENTO",
-    "title": "Example Title 9",
-    "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec risus mi, porta eu mi ut, molestie condimentum neque. Curabitur sed mattis elit. Sed rhoncus urna arcu. Vestibulum sit amet velit dictum ipsum cursus finibus. Aliquam ac lobortis sapien. Suspendisse euismod feugiat pellentesque. Proin luctus elementum dolor, in pellentesque velit maximus eget. Donec dignissim orci id viverra finibus.",
-    "characters": ["character", "villain9"],
-    "setting": "setting",
+    "title": "Ang Kagubatan",
+    "story": "May isang malawak na kagubatan na puno ng matatangkad na puno at luntiang halaman. Isang araw, namamasyal si Angelo sa kagubatan. Namangha siya nang makarating sa tuktok ng kagubatan at nakita niya ang tanawin na kay ganda.\n\nNatutunan ni Angelo na mahalaga ang pangalagaan ang kagubatan at kalikasan. Bago siya umuwi, nangako siya na aalagaan at poprotektahan ang kalikasan. Umuwi siya na masaya ang puso at puno ng tuwa ang mga mata dahil sa tanawing kanyang nakita.",
+    "characters": ["juan", "angelo"],
+    "setting": "kagubatan",
     "questions": [
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "question": "Saan namamasyal si Angelo?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": true
-          }
+          { "choice": "Sa tabing dagat", "isAnswer": false },
+          { "choice": "Sa lungsod", "isAnswer": false },
+          { "choice": "Sa kagubatan", "isAnswer": true },
+          { "choice": "Sa paaralan", "isAnswer": false }
         ]
       },
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (2)",
+        "question": "Ano ang makikita sa kagubatan?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": true
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": false
-          }
+          { "choice": "Matataas na gusali", "isAnswer": false },
+          { "choice": "Malalaking sasakyan", "isAnswer": false },
+          { "choice": "Matatangkad na puno at luntiang halaman", "isAnswer": true },
+          { "choice": "Malalawak na kalsada", "isAnswer": false }
         ]
       },
       {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (3)",
+        "question": "Sino ang pangunahing tauhan sa kwento?",
         "choices": [
-          {
-            "choice": "Choice 1",
-            "isAnswer": true
-          },
-          {
-            "choice": "Choice 2",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 3",
-            "isAnswer": false
-          },
-          {
-            "choice": "Choice 4",
-            "isAnswer": false
-          }
+          { "choice": "Marco", "isAnswer": false },
+          { "choice": "Angelo", "isAnswer": true },
+          { "choice": "Lino", "isAnswer": false },
+          { "choice": "Tonio", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang naramdaman ni Angelo nang makita ang tanawin?",
+        "choices": [
+          { "choice": "Natakot", "isAnswer": false },
+          { "choice": "Nalungkot", "isAnswer": false },
+          { "choice": "Namangha", "isAnswer": true },
+          { "choice": "Nagalit", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Saan nakarating si Angelo?",
+        "choices": [
+          { "choice": "Sa ilog", "isAnswer": false },
+          { "choice": "Sa tuktok ng kagubatan", "isAnswer": true },
+          { "choice": "Sa kuweba", "isAnswer": false },
+          { "choice": "Sa bukid", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang nakita ni Angelo sa tuktok ng kagubatan?",
+        "choices": [
+          { "choice": "Tanawin na kay ganda", "isAnswer": true },
+          { "choice": "Madilim na lugar", "isAnswer": false },
+          { "choice": "Maruming paligid", "isAnswer": false },
+          { "choice": "Nasirang mga puno", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang natutunan ni Angelo?",
+        "choices": [
+          { "choice": "Maglaro sa kagubatan", "isAnswer": false },
+          { "choice": "Mahalaga ang mamasyal", "isAnswer": false },
+          { "choice": "Mahalaga ang pangalagaan ang kagubatan at kalikasan", "isAnswer": true },
+          { "choice": "Mahalaga ang umuwi ng maaga", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang ipinangako ni Angelo bago umuwi?",
+        "choices": [
+          { "choice": "Magbibiyahe siya", "isAnswer": false },
+          { "choice": "Aalagaan at protektahan ang kalikasan", "isAnswer": true },
+          { "choice": "Puputulin ang mga puno", "isAnswer": false },
+          { "choice": "Hindi na babalik sa kagubatan", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang naramdaman ni Angelo nang umuwi siya?",
+        "choices": [
+          { "choice": "Galit", "isAnswer": false },
+          { "choice": "Malungkot", "isAnswer": false },
+          { "choice": "Masaya at puno ng tuwa", "isAnswer": true },
+          { "choice": "Pagod", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Bakit masaya si Angelo nang umuwi?",
+        "choices": [
+          { "choice": "Dahil may regalo siya", "isAnswer": false },
+          { "choice": "Dahil tapos na ang lakad", "isAnswer": false },
+          { "choice": "Dahil sa tanawing kanyang nakita", "isAnswer": true },
+          { "choice": "Dahil umulan", "isAnswer": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 10,
+    "type": "MAIKLING KUWENTO",
+    "title": "Araw ng mga Puso",
+    "story": "Tuwing buwan ng Pebrero, masaya si Karlo dahil ito ang Araw ng mga Puso. Espesyal ito sa kanya dahil nais niyang magbigay ng regalo sa kanyang pamilya at sa kanyang iniirog.\n\nNgunit nang bibili na siya ng regalo, napagtanto niyang wala pala siyang pera. Kaya nag-isip si Karlo ng paraan upang kumita. Nagtrabaho siya bilang kargador sa isang bigasan.\n\nMatapos ang ilang araw, nakaipon siya ng pera. Masaya si Karlo dahil nakapagbigay siya ng regalo gamit ang perang pinaghirapan niya. Natutunan ni Karlo na mas masarap magbigay kapag bukal sa loob at pinaghirapan ang bagay na ibinibigay.",
+    "characters": ["juan", "karlo"],
+    "setting": "baryo",
+    "questions": [
+      {
+        "question": "Kailan nagiging masaya si Karlo?",
+        "choices": [
+          { "choice": "Tuwing Enero", "isAnswer": false },
+          { "choice": "Tuwing Pebrero", "isAnswer": true },
+          { "choice": "Tuwing Marso", "isAnswer": false },
+          { "choice": "Tuwing Abril", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Bakit espesyal ang Pebrero para kay Karlo?",
+        "choices": [
+          { "choice": "Dahil may bakasyon", "isAnswer": false },
+          { "choice": "Dahil kaarawan niya", "isAnswer": false },
+          { "choice": "Dahil Araw ng mga Puso", "isAnswer": true },
+          { "choice": "Dahil pista sa baryo", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Sino ang nais bigyan ng regalo ni Karlo?",
+        "choices": [
+          { "choice": "Kaibigan lamang", "isAnswer": false },
+          { "choice": "Guro at kaklase", "isAnswer": false },
+          { "choice": "Pamilya at iniirog", "isAnswer": true },
+          { "choice": "Kapitbahay", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang napagtanto ni Karlo bago bumili ng regalo?",
+        "choices": [
+          { "choice": "Marami siyang pera", "isAnswer": false },
+          { "choice": "Wala siyang oras", "isAnswer": false },
+          { "choice": "Wala siyang pera", "isAnswer": true },
+          { "choice": "Wala siyang regalo", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang ginawa ni Karlo upang kumita ng pera?",
+        "choices": [
+          { "choice": "Nagbenta sa palengke", "isAnswer": false },
+          { "choice": "Nagtrabaho bilang kargador sa bigasan", "isAnswer": true },
+          { "choice": "Humingi ng pera", "isAnswer": false },
+          { "choice": "Naglaro sa labas", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Saan nagtrabaho si Karlo?",
+        "choices": [
+          { "choice": "Sa tindahan", "isAnswer": false },
+          { "choice": "Sa bukid", "isAnswer": false },
+          { "choice": "Sa bigasan", "isAnswer": true },
+          { "choice": "Sa paaralan", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ilang araw nagtrabaho si Karlo?",
+        "choices": [
+          { "choice": "Isang araw", "isAnswer": false },
+          { "choice": "Dalawang araw", "isAnswer": false },
+          { "choice": "Tatlong araw", "isAnswer": true },
+          { "choice": "Apat na araw", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang naramdaman ni Karlo matapos makapag-ipon ng pera?",
+        "choices": [
+          { "choice": "Malungkot", "isAnswer": false },
+          { "choice": "Galit", "isAnswer": false },
+          { "choice": "Masaya", "isAnswer": true },
+          { "choice": "Takot", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang ginamit ni Karlo sa pagbili ng regalo?",
+        "choices": [
+          { "choice": "Hiram na pera", "isAnswer": false },
+          { "choice": "Bigay ng kaibigan", "isAnswer": false },
+          { "choice": "Perang pinaghirapan", "isAnswer": true },
+          { "choice": "Nakitang pera", "isAnswer": false }
+        ]
+      },
+      {
+        "question": "Ano ang aral ng kwento?",
+        "choices": [
+          { "choice": "Mas masaya ang walang ginagawa", "isAnswer": false },
+          { "choice": "Masayang makapagbigay ng bukal sa loob", "isAnswer": true },
+          { "choice": "Mas mabuti ang manghingi ng pera", "isAnswer": false },
+          { "choice": "Hindi mahalaga ang regalo", "isAnswer": false }
         ]
       }
     ]
