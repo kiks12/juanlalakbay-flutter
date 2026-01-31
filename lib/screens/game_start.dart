@@ -56,7 +56,7 @@ class _GameStartState extends State<GameStart> {
   Future<void> loadLevel() async {
     List<Level> levels = await levelsService.loadJsonData();
 
-    if (widget.levelNumber >= levels.length && mounted) {
+    if (widget.levelNumber > levels.length && mounted) {
       // If level number exceeds available levels
       // show certificate or congrats screen instead
       Navigator.push(
