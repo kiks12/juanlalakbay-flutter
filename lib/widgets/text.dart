@@ -5,6 +5,7 @@ class GameText extends StatelessWidget {
   final double fontSize;
   final Color textColor;
   final Color outlineColor;
+  final TextAlign textAlign;
 
   const GameText({
     super.key,
@@ -12,6 +13,7 @@ class GameText extends StatelessWidget {
     this.fontSize = 24,
     this.textColor = Colors.white,
     this.outlineColor = Colors.black,
+    this.textAlign = TextAlign.start,
   });
 
   @override
@@ -29,10 +31,12 @@ class GameText extends StatelessWidget {
               ..strokeWidth = 4
               ..color = outlineColor,
           ),
+          textAlign: textAlign,
         ),
         // Main text
         Text(
           text,
+          textAlign: textAlign,
           style: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.w900,
