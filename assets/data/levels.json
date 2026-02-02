@@ -650,7 +650,7 @@
     "title": "Ang Lamok at ang Palaka",
     "story": "Isang gabi habang naghahanap ng pagkain si Mario na isang palaka sa kagubatan na maraming lamok, nakita siya ng hari ng mga lamok na ang pangalan ay Rudolfo. Si Rudolfo ay tatawid ng ilog dahil papunta ito sa kabilang baryo upang makipagkita sa kanyang kasintahan na si Becka na isa ring prinsesa sa kanilang nayon. Hindi pa nakakalayo si Rudolfo nang siya ay makita ni Mario kaya agad niya itong hinabol upang gawing hapunan. Inabot ng hatinggabi ang kanilang paghahabulan at nag-alala si Becka. Mula sa kabilang ilog ay nakita niyang hinahabol si Rudolfo ni Mario kaya agad siyang humingi ng tulong. Dumating ang mga lamok at nailigtas si Rudolfo. Napatunayan nila na walang anumang hadlang ang kayang pumigil sa tunay na pag-ibig.",
     "characters": ["juan", "lamok", "palaka"],
-    "setting": "guba-na-may-ilog",
+    "setting": "gubat-na-may-ilog",
     "questions": [
       {
         "question": "Sino si Mario sa kuwento?",
@@ -750,7 +750,7 @@
     "title": "Ang Payapang Dagat",
     "story": "Isang hapon, naglalakad si Tonio sa tabing dagat. Tahimik ang paligid at hampas lang ng alon at huni ng ibon ang kanyang naririnig, na ito ay tila isang awitin na nakakapawi ng mga pagod.\n\nUmakyat si Lino sa itaas ng puno at pinanood ang paglubog ng araw sa kanluran. Naramdaman niya ang kapayapaan sa paligid at saya sa kanyang puso at kanyang napagtanto na napakahalaga na ingatan natin ang karagatan.",
     "characters": ["juan", "tonio"],
-    "setting": "dagat",
+    "setting": "tabingdagat",
     "questions": [
       {
         "question": "Sino ang naglalakad sa tabing dagat?",
@@ -850,7 +850,7 @@
     "title": "Ang Kagubatan",
     "story": "May isang malawak na kagubatan na puno ng matatangkad na puno at luntiang halaman. Isang araw, namamasyal si Angelo sa kagubatan. Namangha siya nang makarating sa tuktok ng kagubatan at nakita niya ang tanawin na kay ganda.\n\nNatutunan ni Angelo na mahalaga ang pangalagaan ang kagubatan at kalikasan. Bago siya umuwi, nangako siya na aalagaan at poprotektahan ang kalikasan. Umuwi siya na masaya ang puso at puno ng tuwa ang mga mata dahil sa tanawing kanyang nakita.",
     "characters": ["juan", "angelo"],
-    "setting": "kagubatan",
+    "setting": "kabundukan",
     "questions": [
       {
         "question": "Saan namamasyal si Angelo?",

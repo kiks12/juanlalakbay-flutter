@@ -220,20 +220,18 @@ class _CertificateScreenState extends State<CertificateScreen> {
                                   ),
                                 ],
                               ),
-                              child: Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Icon(Icons.auto_stories, size: 40),
-                                    const SizedBox(height: 8),
-                                    GameText(
-                                      text: cert,
-                                      fontSize: 14,
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ],
-                                ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Icon(Icons.auto_stories, size: 40),
+                                  const SizedBox(height: 8),
+                                  GameText(
+                                    text: cert,
+                                    fontSize: 14,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
                               ),
                             ),
                           );
