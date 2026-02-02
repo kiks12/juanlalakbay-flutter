@@ -76,13 +76,19 @@ class _CertificateScreenState extends State<CertificateScreen> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    GameText(text: "Certificate of Achievement", fontSize: 24),
+                    GameText(text: "Sertipiko ng Tagumpay", fontSize: 24),
                     const SizedBox(height: 16),
-                    GameText(
-                      text:
-                          "This certifies that you have successfully completed the $title levels.",
-                      fontSize: 16,
-                    ),
+                    getStoryCertificates().contains(title)
+                        ? GameText(
+                            text:
+                                "Ang sertipiko na ito ay pinatutunayan na matagumpay mong nakumpleto ang mga antas ng $title",
+                            fontSize: 16,
+                          )
+                        : GameText(
+                            text:
+                                "Ang sertipiko ito ay nagpapatunay na matagumpay mong natalo si $title",
+                            fontSize: 16,
+                          ),
                     const SizedBox(height: 24),
                     GameText(text: "Juanlalakbay", fontSize: 14),
                   ],
@@ -141,7 +147,7 @@ class _CertificateScreenState extends State<CertificateScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      GameText(text: "Defeated Enemies", fontSize: 22),
+                      GameText(text: "Natalong mga kalaban", fontSize: 22),
                       const SizedBox(height: 16),
 
                       // ───── CHARACTER GRID ─────
@@ -183,7 +189,7 @@ class _CertificateScreenState extends State<CertificateScreen> {
                       ),
 
                       const SizedBox(height: 40),
-                      GameText(text: "Story Achievements", fontSize: 22),
+                      GameText(text: "Napagtagumpayan na kwento", fontSize: 22),
                       const SizedBox(height: 16),
 
                       Wrap(
@@ -197,6 +203,7 @@ class _CertificateScreenState extends State<CertificateScreen> {
                             },
                             child: Container(
                               width: 120,
+                              height: 130,
                               padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
                                 color: Colors.blue.shade100,
@@ -213,12 +220,20 @@ class _CertificateScreenState extends State<CertificateScreen> {
                                   ),
                                 ],
                               ),
-                              child: Column(
-                                children: [
-                                  const Icon(Icons.auto_stories, size: 40),
-                                  const SizedBox(height: 8),
-                                  GameText(text: cert, fontSize: 14),
-                                ],
+                              child: Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(Icons.auto_stories, size: 40),
+                                    const SizedBox(height: 8),
+                                    GameText(
+                                      text: cert,
+                                      fontSize: 14,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           );
@@ -252,7 +267,7 @@ class _CertificateScreenState extends State<CertificateScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0),
-                    child: GameText(text: 'Certificates', fontSize: 20),
+                    child: GameText(text: 'Mga Sertipiko', fontSize: 20),
                   ),
                 ],
               ),
