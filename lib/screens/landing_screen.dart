@@ -34,9 +34,9 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
   @override
   void initState() {
     super.initState();
-    hiveService.init().then((_) {
-      hiveService.resetGameProgress(currentLevel: 6); // For testing
-    });
+    // hiveService.init().then((_) {
+    //   hiveService.resetGameProgress(currentLevel: 10); // For testing
+    // });
     loadGame();
   }
 
@@ -302,7 +302,7 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: GameButton(
-                          text: "Certificates",
+                          text: "Mga Sertipiko",
                           icon: Icons.book_rounded,
                           onPressed: navigateToCertificatesScreen,
                           type: GameButtonType.info,
