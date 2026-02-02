@@ -235,7 +235,7 @@
     "title": "TAMBOL",
     "story": "Sa bawat hampas at palo ng tambol,\nHimig nito sa tenga ko'y bumabaon.\nTunog nito na masigla at kay ligaya,\nNapapaindak nito ang bawat isa.",
     "characters": ["juan", "tambol"],
-    "setting": "bayan",
+    "setting": "entablado",
     "questions": [
       {
         "question": "Anong instrumento ang tinutukoy sa tula?",
