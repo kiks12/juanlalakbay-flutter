@@ -25,11 +25,15 @@ class HiveService {
         GameProgress(currentLevel: 1, completedLevels: []);
   }
 
-  void resetGameProgress({int currentLevel = 1}) {
+  void resetGameProgress({
+    int currentLevel = 1,
+    List<String> defeatedEnemies = const ['karlo', 'tonio'],
+  }) {
     gameProgress = GameProgress(
       currentLevel: currentLevel,
       completedLevels: [],
     );
+    gameProgress.defeatedEnemies = defeatedEnemies;
     gameProgressBox.put(_progressKey, gameProgress);
   }
 }
