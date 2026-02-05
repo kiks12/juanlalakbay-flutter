@@ -11,6 +11,7 @@ import 'package:juanlalakbay/services/levels_service.dart';
 import 'package:juanlalakbay/widgets/button.dart';
 import 'package:juanlalakbay/widgets/level_marker/level_marker.dart';
 import 'package:juanlalakbay/widgets/level_path_painter.dart';
+import 'package:juanlalakbay/widgets/text.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
@@ -20,6 +21,18 @@ class LandingScreen extends StatefulWidget {
 }
 
 class _LandingScreenState extends State<LandingScreen> with RouteAware {
+  static String gabay = """
+    Ang larong ito ay nag ngangalang JUANLALAKBAY. 
+
+    Paano gamitin:
+
+    1. Pindutin ang lebel 1 para mag simula ka sa kwento na iyong babasahin!
+    2. Matapos mong basahin ang kwento sa bawat lebel maaari ka ng magpatuloy sa susunod na hakbang.
+    3. Matapos mong mabasa ang kwento ng maayos ay maaari ka ng mag patuloy sa gabay na mga tanong. 
+    4. Sagutan mo ng maigi ang mga tanong upang matalo ang iyong kalaban at mag patuloy sa susunod na lebel. 
+    5. Pag natapos mo ang bawat lebel maaari mong tignan ang iyong mga natalo at mga sertipiko sa kanang bahagi ng laro. 
+    6. Paalala lamang, basahing maigi ang bawat kwento at gabay na tanong upang malampasan mo lahat ng pagsubok na iyong kahaharapin sa bawat lebel.
+  """;
   static double offsetX = -84.0;
   final HiveService hiveService = HiveService.instance;
   final LevelsService levelsService = LevelsService();
@@ -30,6 +43,8 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
 
   final ScrollController _scrollController = ScrollController();
   late List<Offset> nodes;
+
+  bool showGabay = false;
 
   @override
   void initState() {
@@ -137,6 +152,7 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
 
     nodes = generateSCurvePoints(
       count: levels.length,
@@ -285,6 +301,20 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
                   ),
                 ),
 
+                Positioned(
+                  left: 40,
+                  bottom: 40,
+                  child: GameButton(
+                    type: GameButtonType.info,
+                    icon: Icons.question_mark,
+                    onPressed: () {
+                      setState(() {
+                        showGabay = true;
+                      });
+                    },
+                  ),
+                ),
+
                 // Title + Start Button (fixed)
                 Positioned(
                   right: 40,
@@ -311,6 +341,56 @@ class _LandingScreenState extends State<LandingScreen> with RouteAware {
                     ],
                   ),
                 ),
+
+                (showGabay)
+                    ? Center(
+                        child: Container(
+                          width: screenWidth * 0.6,
+                          height: screenHeight * 0.85,
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFFFFF59D), Color(0xFFFFE082)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(24),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.3),
+                                offset: const Offset(0, 6),
+                                blurRadius: 6,
+                              ),
+                            ],
+                            border: Border.all(
+                              color: Colors.orange.shade700,
+                              width: 3,
+                            ),
+                          ),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    GameButton(
+                                      size: GameButtonSize.small,
+                                      onPressed: () {
+                                        setState(() {
+                                          showGabay = false;
+                                        });
+                                      },
+                                      icon: Icons.close,
+                                    ),
+                                  ],
+                                ),
+                                GameText(text: gabay, fontSize: 15),
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
+                    : Container(),
               ],
             ),
     );
